@@ -551,7 +551,10 @@ class DESPlugin(InstallationPlugin):
         if "/.venv/" in python_path or "\\.venv\\" in python_path:
             return "python3"
 
-        home = str(Path.home())
+        # Forward slashes: hook commands run through a POSIX shell (Git Bash on
+        # Windows), which treats backslashes as escapes and mangles the path.
+        python_path = Path(python_path).as_posix()
+        home = Path.home().as_posix()
         if python_path.startswith(home):
             python_path = "$HOME" + python_path[len(home) :]
         return python_path
@@ -582,7 +585,7 @@ class DESPlugin(InstallationPlugin):
         if context.claude_dir == Path.home() / ".claude":
             lib_path = "$HOME/.claude/lib/python"
         else:
-            lib_path = str(context.claude_dir / "lib" / "python")
+            lib_path = (context.claude_dir / "lib" / "python").as_posix()
         python_path = self._resolve_python_path()
         return self.HOOK_COMMAND_TEMPLATE.format(
             lib_path=lib_path,
@@ -994,8 +997,8 @@ class DESPlugin(InstallationPlugin):
     ) -> None:
         """Prepend the absolute DES bin path to settings.json env.PATH if not present.
 
-        Idempotent: skips prepend if des_bin_path is already a colon-delimited
-        segment of the current PATH value.
+        Idempotent: skips prepend if des_bin_path is already a segment of the
+        current PATH value (split on os.pathsep).
 
         When settings.json has no prior env.PATH, seeds it from the live
         install-time PATH (os.environ["PATH"]) so user-visible directories
@@ -1027,13 +1030,24 @@ class DESPlugin(InstallationPlugin):
             config["env"] = {}
 
         existing_path = config["env"].get("PATH", "")
+        # PATH separator is platform-specific: ':' on POSIX, ';' on Windows,
+        # where ':' also appears in every drive letter (C:\...).
+        sep = os.pathsep
+
+        # Heal values written by earlier installers that joined with ':' on
+        # Windows: one or more leading '<des_bin>:' copies glued to the rest.
+        # On POSIX ':' is the real separator, so this never applies there.
+        malformed_prefix = des_bin_path + ":"
+        if sep != ":":
+            while existing_path.startswith(malformed_prefix):
+                existing_path = existing_path[len(malformed_prefix) :]
 
         # Normalize any $HOME references in existing PATH entries to absolute paths.
         # Claude Code does not shell-expand env values, so $HOME must be resolved now.
         if existing_path and "$HOME" in existing_path:
             home = str(Path.home())
-            segments = [s.replace("$HOME", home) for s in existing_path.split(":")]
-            existing_path = ":".join(segments)
+            segments = [s.replace("$HOME", home) for s in existing_path.split(sep)]
+            existing_path = sep.join(segments)
 
         # Auto-heal settings written by older installer versions: detect the
         # exact byte-for-byte signature of the prior fabricated value
@@ -1044,12 +1058,12 @@ class DESPlugin(InstallationPlugin):
         legacy_fabricated_path = f"{des_bin_path}:{self.SYSTEM_PATH_FALLBACK}"
         if existing_path == legacy_fabricated_path:
             live_path = os.environ.get("PATH") or self.SYSTEM_PATH_FALLBACK
-            config["env"]["PATH"] = des_bin_path + ":" + live_path
+            config["env"]["PATH"] = des_bin_path + sep + live_path
             if not context.dry_run:
                 self._save_settings(settings_file, config, context)
             return
 
-        if des_bin_path in existing_path.split(":"):
+        if des_bin_path in existing_path.split(sep):
             if existing_path != config["env"].get("PATH", ""):
                 config["env"]["PATH"] = existing_path
                 if not context.dry_run:
@@ -1057,13 +1071,13 @@ class DESPlugin(InstallationPlugin):
             return
 
         if existing_path:
-            config["env"]["PATH"] = des_bin_path + ":" + existing_path
+            config["env"]["PATH"] = des_bin_path + sep + existing_path
         else:
             # Seed from the user's live install-time PATH so binaries reachable
             # from their shell (claude itself in ~/.local/bin, pnpm, node, etc.)
             # remain reachable inside Claude Code sessions and hooks.
             live_path = os.environ.get("PATH") or self.SYSTEM_PATH_FALLBACK
-            config["env"]["PATH"] = des_bin_path + ":" + live_path
+            config["env"]["PATH"] = des_bin_path + sep + live_path
 
         if not context.dry_run:
             self._save_settings(settings_file, config, context)

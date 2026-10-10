@@ -261,12 +261,12 @@ class DESHookInstaller:
             config: Configuration dictionary to update
         """
         # Get absolute path to project root (parent of scripts/install/)
-        project_root = str(Path(__file__).resolve().parent.parent.parent)
+        project_root = Path(__file__).resolve().parent.parent.parent.as_posix()
 
         # Substitution map for all placeholders
         substitutions = {
             "{project_root}": project_root,
-            "{python_path}": sys.executable,
+            "{python_path}": Path(sys.executable).as_posix(),
         }
 
         # Create hook configs with placeholders substituted

@@ -84,7 +84,10 @@ def _resolve_python_path() -> str:
     if "/.venv/" in python_path or "\\.venv\\" in python_path:
         return "python3"
 
-    home = str(Path.home())
+    # Forward slashes: hook commands run through a POSIX shell (Git Bash on
+    # Windows), which treats backslashes as escapes and mangles the path.
+    python_path = Path(python_path).as_posix()
+    home = Path.home().as_posix()
     if python_path.startswith(home):
         python_path = "$HOME" + python_path[len(home) :]
     return python_path
@@ -231,10 +234,10 @@ def install_attribution_hook(
     python_cmd = _resolve_python_path()
     if _SHELL_UNSAFE.search(python_cmd):
         python_cmd = "python3"  # fallback to safe default
-    hook_script_path = str(hook_dest)
+    hook_script_path = hook_dest.as_posix()
     if _SHELL_UNSAFE.search(hook_script_path):
-        hook_script_path = str(config_dir / "hooks" / _HOOK_SCRIPT_NAME)
-    home = str(Path.home())
+        hook_script_path = (config_dir / "hooks" / _HOOK_SCRIPT_NAME).as_posix()
+    home = Path.home().as_posix()
     if hook_script_path.startswith(home):
         hook_script_path = "$HOME" + hook_script_path[len(home) :]
 
@@ -753,7 +756,7 @@ def _attribution_hook_command(claude_dir: Path) -> str:
     if claude_dir == Path.home() / ".claude":
         lib_path = "$HOME/.claude/lib/python"
     else:
-        lib_path = str(claude_dir / "lib" / "python")
+        lib_path = (claude_dir / "lib" / "python").as_posix()
     python_cmd = _resolve_python_path()
     return (
         f"{_ATTRIBUTION_HOOK_MARKER}\n"

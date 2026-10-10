@@ -45,7 +45,8 @@ def _extract_binary(command: str, home_dir: Path) -> str | None:
     Returns:
         Binary token (bare name or absolute path string), or None.
     """
-    command_expanded = command.replace("$HOME", str(home_dir))
+    # Forward slashes: shlex treats backslashes in a Windows home as escapes.
+    command_expanded = command.replace("$HOME", home_dir.as_posix())
     try:
         tokens = shlex.split(command_expanded)
     except ValueError:

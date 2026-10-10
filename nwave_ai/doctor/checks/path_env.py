@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from typing import TYPE_CHECKING
 
 from nwave_ai.common.check_result import CheckResult
@@ -21,7 +22,7 @@ class PathEnvCheck:
     def run(self, context: DoctorContext) -> CheckResult:
         """Return passed=True when claude_dir/bin is a member of env.PATH entries.
 
-        Uses colon-split set membership to avoid substring false positives.
+        Uses os.pathsep-split set membership to avoid substring false positives.
 
         Args:
             context: Filesystem roots — reads context.settings_path.
@@ -46,7 +47,7 @@ class PathEnvCheck:
             )
 
         expected_bin = str(context.claude_dir / "bin")
-        path_entries = set(env_section["PATH"].split(":"))
+        path_entries = set(env_section["PATH"].split(os.pathsep))
 
         if expected_bin in path_entries:
             return CheckResult(

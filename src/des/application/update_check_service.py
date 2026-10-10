@@ -283,7 +283,13 @@ def _is_newer(candidate: str, current: str) -> bool:
 
     Uses simple tuple comparison on integer version parts.  Sufficient for
     PEP 440 epoch-free semantic versions (MAJOR.MINOR.PATCH).
+
+    A current version with a PEP 440 local segment (e.g. ``3.22.2+etherel.1``)
+    is a fork build installed from source: PyPI only publishes upstream, so
+    "upgrading" would replace the fork. Never report an update for it.
     """
+    if "+" in current:
+        return False
     try:
         return _parse_version(candidate) > _parse_version(current)
     except (ValueError, AttributeError):

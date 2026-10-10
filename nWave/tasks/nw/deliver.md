@@ -97,8 +97,8 @@ INPUT: "{feature-description}"
   1.5. Detect development paradigm
      a. Read project CLAUDE.md (project root, NOT ~/.claude/CLAUDE.md)
      b. Search "## Development Paradigm"
-     c. Found → extract paradigm: "functional"/@nw-functional-software-crafter or "object-oriented"/@nw-software-crafter (default)
-     d. Not found → ask user "OOP or Functional?"|offer to write to CLAUDE.md
+     c. Found → extract paradigm: "hybrid"/@nw-software-crafter (default) | "object-oriented"/@nw-software-crafter | "functional"/@nw-functional-software-crafter
+     d. Not found → ask user "Hybrid (recommended), pure OOP, or pure FP?"|offer to write to CLAUDE.md
      e. Store selected crafter for all Phase 2 dispatches
      f. Functional → property-based testing default|@property tags signal PBT|example-based = fallback
   |

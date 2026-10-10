@@ -1,6 +1,6 @@
 ---
 description: "Designs system architecture with C4 diagrams and technology selection. Use when defining component boundaries, choosing tech stacks, or creating architecture documents."
-argument-hint: "[component-name] - Optional: --residuality --paradigm=[auto|oop|fp]"
+argument-hint: "[component-name] - Optional: --residuality --paradigm=[auto|oop|fp|hybrid]"
 ---
 
 # NW-DESIGN: Architecture Design
@@ -78,20 +78,25 @@ Morgan asks: How many teams? Communication patterns? Does proposed architecture 
 
 ### Step 3.5: Development Paradigm Selection
 
-Morgan identifies primary language(s) from constraints, then applies:
+Morgan always asks the user to choose one of three paradigms:
 
-- **FP-native** (Haskell|F#|Scala|Clojure|Elixir): recommend Functional
-- **OOP-native** (Java|C#|Go): recommend OOP
-- **Multi-paradigm** (TypeScript|Kotlin|Python|Rust|Swift): present both, let user choose based on team experience and domain fit
+- **Hybrid (default, recommended)**: functional in the small, object-oriented in the large: immutable domain values and pure rules, use cases as stateless functions taking their dependencies as parameters, ports as interfaces, adapters as classes with constructor injection, wiring in a composition root
+- **Pure OOP**: behaviour lives in objects (services as classes, rich domain objects)
+- **Pure FP**: functions and data only (ports as function signatures, dependencies as function parameters, no classes)
 
-After confirmation, ask user permission to write paradigm to project CLAUDE.md:
-- FP: `This project follows the **functional programming** paradigm. Use @nw-functional-software-crafter for implementation.`
-- OOP: `This project follows the **object-oriented** paradigm. Use @nw-software-crafter for implementation.`
+Exception: in languages without classes/interfaces (Haskell|Clojure|Elixir) hybrid does not apply — recommend Pure FP.
 
-Default if user declines/unsure: OOP. User can override later.
+After confirmation, ask user permission to write paradigm to project CLAUDE.md under `## Development Paradigm`:
+- Hybrid: `This project follows the **hybrid** paradigm (functional core: immutable domain, use cases as functions; object-oriented structure: interfaces as ports, classes as adapters, constructor injection). Use @nw-software-crafter for implementation.`
+- Pure OOP: `This project follows the **object-oriented** paradigm. Use @nw-software-crafter for implementation.`
+- Pure FP: `This project follows the **functional programming** paradigm. Use @nw-functional-software-crafter for implementation.`
+
+Default if user declines/unsure: Hybrid. User can override later.
 
 ### Step 4: Recommend Architecture Based on Drivers
 Recommend based on quality attribute priorities|constraints|paradigm from Steps 1-3.5. Default: modular monolith with dependency inversion (ports-and-adapters). Overrides require evidence.
+
+If hybrid paradigm selected, Morgan applies a functional core (immutable domain, use cases as functions) with object-oriented ports/adapters and a composition root.
 
 If functional paradigm selected, Morgan adapts architectural strategy:
 - Types-first design: define algebraic data types and domain models before components
@@ -205,7 +210,7 @@ Before completing DESIGN, produce `docs/feature/{feature-id}/design/wave-decisio
 
 ## Architecture Summary
 - Pattern: {e.g., modular monolith with ports-and-adapters}
-- Paradigm: {OOP|FP}
+- Paradigm: {Hybrid|OOP|FP}
 - Key components: {list top-level components}
 
 ## Technology Stack

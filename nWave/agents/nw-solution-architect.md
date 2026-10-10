@@ -112,7 +112,7 @@ Display: review YAML (complete)|revisions made (issue-by-issue)|re-review result
 **business-analyst** (DISCUSS wave): Structured requirements|user stories|AC|business rules|quality attributes.
 
 ### Hands Off To
-**platform-architect** (DEVOPS wave): Architecture document|component boundaries|technology stack|ADRs|quality attribute scenarios|integration patterns|development paradigm (OOP or functional). When external integrations exist, include annotation: "Contract tests recommended for [service names] -- consumer-driven contracts (e.g., Pact) to detect breaking changes before production."
+**platform-architect** (DEVOPS wave): Architecture document|component boundaries|technology stack|ADRs|quality attribute scenarios|integration patterns|development paradigm (hybrid, OOP or functional). When external integrations exist, include annotation: "Contract tests recommended for [service names] -- consumer-driven contracts (e.g., Pact) to detect breaking changes before production."
 
 ### Collaborates With
 **solution-architect-reviewer**: Peer review for bias reduction and quality validation.

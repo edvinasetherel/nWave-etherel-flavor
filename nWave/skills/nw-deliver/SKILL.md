@@ -144,8 +144,8 @@ At the start of execution, create these tasks using TaskCreate and follow them i
    - Gate: directory exists, `execution-log.json` created via CLI, session marker written.
 
 1.5. **Detect Development Paradigm** — Read project `CLAUDE.md` (project root, NOT `~/.claude/CLAUDE.md`). Search "## Development Paradigm".
-   - Found → extract paradigm: `"functional"` → `@nw-functional-software-crafter` or `"object-oriented"` → `@nw-software-crafter` (default).
-   - Not found → ask user "OOP or Functional?", offer to write to `CLAUDE.md`.
+   - Found → extract paradigm: `"hybrid"` → `@nw-software-crafter` (default) | `"object-oriented"` → `@nw-software-crafter` | `"functional"` → `@nw-functional-software-crafter`.
+   - Not found → ask user "Hybrid (recommended), pure OOP, or pure FP?", offer to write to `CLAUDE.md`.
    - Store selected crafter for all Phase 2 dispatches.
    - Functional → property-based testing default; `@property` tags signal PBT; example-based = fallback.
    - Gate: crafter selected and stored.

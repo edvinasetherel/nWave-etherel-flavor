@@ -98,7 +98,7 @@ Load on-demand by phase, not all at once. Each skill loading decision uses one o
 | Strategy | When | Example |
 |----------|------|---------|
 | **Always** | Core methodology the agent cannot function without | `tdd-methodology` for software-crafter |
-| **Conditional** | Domain-specific knowledge needed only for certain inputs | `fp-kotlin` only when target language is Kotlin |
+| **Conditional** | Domain-specific knowledge needed only for certain inputs | `kotlin` only when target language is Kotlin |
 | **On-demand** | Reference material loaded when a specific pattern is detected | `mikado-method` only when refactoring is complex |
 | **Cross-ref** | Skill from paired agent's directory (shared knowledge) | reviewer loading `tdd-methodology` from crafter |
 

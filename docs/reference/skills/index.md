@@ -32,6 +32,10 @@
 
 - [nw-at-completeness-check](nw-at-completeness-check.md) — Canonical AT completeness gate — research-anchored 7-category taxonomy (C1-C7) + 15-item mechanical checklist. Paradigm-neutral. Drives acceptance-designer reviewer verdict deterministically.
 
+## nw-atdd-dsl
+
+- [nw-atdd-dsl](nw-atdd-dsl.md) — Acceptance tests as executable specifications written in a custom in-code DSL (no Gherkin) - four layers (spec, DSL, driver, system), naming, assertions, data isolation, channel swapping, and how nWave mandates map onto DSL mode
+
 ## nw-authoritative-sources
 
 - [nw-authoritative-sources](nw-authoritative-sources.md) — Domain-specific authoritative source databases, search strategies by topic category, and source freshness rules
@@ -260,10 +264,6 @@
 
 - [nw-fp-hexagonal-architecture](nw-fp-hexagonal-architecture.md) — Hexagonal architecture patterns with pure core and side-effect shell for functional codebases
 
-## nw-fp-kotlin
-
-- [nw-fp-kotlin](nw-fp-kotlin.md) — Kotlin language-specific patterns with Arrow, Raise DSL, and coroutine-based effects
-
 ## nw-fp-principles
 
 - [nw-fp-principles](nw-fp-principles.md) — Core functional programming thinking patterns and type system foundations, language-agnostic
@@ -319,6 +319,10 @@
 ## nw-jtbd-workflow-selection
 
 - [nw-jtbd-workflow-selection](nw-jtbd-workflow-selection.md) — JTBD workflow classification and routing - ODI two-phase framework, five job types with workflow sequences, baseline type selection, workflow anti-patterns, and common recipes
+
+## nw-kotlin
+
+- [nw-kotlin](nw-kotlin.md) — Kotlin house style for both crafters - functional services with object-oriented structure, suspend-first coroutines, sealed per-operation outcomes, kotlin-logging, and pure JUnit Jupiter testing
 
 ## nw-leanux-methodology
 

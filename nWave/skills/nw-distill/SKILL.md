@@ -18,7 +18,7 @@ This skill provides the acceptance designer's methodology for creating acceptanc
 - `Cargo.toml` → Rust (cargo test, proptest, cucumber-rust)
 - `go.mod` → Go (testing, ginkgo, godog)
 - `pyproject.toml` / `setup.py` / `Pipfile` → Python (pytest, pytest-bdd, hypothesis)
-- `pom.xml` / `build.gradle` → Java / Kotlin (JUnit5, Cucumber-JVM, jqwik)
+- `pom.xml` / `build.gradle` → Java (JUnit Jupiter, Cucumber-JVM, jqwik) / Kotlin (JUnit Jupiter, kotest-property — see `nw-kotlin`)
 - `*.csproj` / `*.fsproj` → C# / F# (xUnit, SpecFlow, FsCheck)
 - `Gemfile` → Ruby (RSpec, Cucumber-Ruby)
 - `Package.swift` → Swift (XCTest, swift-testing)
@@ -33,6 +33,13 @@ This skill provides the acceptance designer's methodology for creating acceptanc
 **Project conventions ALWAYS WIN** over examples below. If the user's repo has 50 TS files using `describe()/it()` blocks and zero Python files, ATs MUST be TypeScript with `describe()/it()` — never Python pytest-bdd regardless of how authoritative this skill's examples look.
 
 **Empirical anchor**: skill examples being Python-only caused LLM to infer Python conventions universal, leading to Python code emitted in greenfield TS project. Connects [[feedback_language_adapter_plugin_architecture_2026_05_24]] (genericity mandate) + F-LANGUAGE-ADAPTER-PLUGIN-INFRASTRUCTURE epic.
+
+## SPEC MODE FRAME (read SECOND — Gherkin or custom DSL)
+
+nWave supports two spec modes. The acceptance designer logs `[spec-mode] gherkin|dsl` in Phase 0 (detection: CLAUDE.md declaration, then existing tests, greenfield asks).
+
+- **gherkin** — `.feature` files + step definitions; this skill applies as written.
+- **dsl** — executable specifications in a custom four-layer DSL (spec → DSL → driver → system), no `.feature` files. Load `nw-atdd-dsl`. Wherever this skill names `.feature` files, step methods, `domain_types.py`, step-reuse ratios, `assert_state_delta`, Tier B state machines or `@contract-shape` tags, use the replacement given in the `nw-atdd-dsl` mandate-mapping table. In outputs, the abstract spec classes are the scenario SSOT, and `feature-delta.md` lists spec classes + test names instead of `.feature` paths.
 
 ## ADR-025 (2026-05-07) — DISTILL is canonical AT author
 
@@ -914,7 +921,7 @@ other languages are bootstrap-on-demand templates (Epic 3+).
 | TypeScript | fast-check | Vitest/Jest | `it.skip(...)` | `*.scenarios.ts` + `*.specifications.ts` |
 | C# | FsCheck | xUnit | `[Fact(Skip="pending")]` | partial class `*Scenarios.cs` + `*Specifications.cs` |
 | Java | jqwik | JUnit | `@Disabled("pending")` | companion test class |
-| Kotlin | kotest-property | Kotest | `@Disabled` | extension functions split |
+| Kotlin | kotest-property (inside JUnit `@Test`) | JUnit Jupiter | `@Disabled("pending")` | DSL mode: abstract spec + DSL + drivers (`nw-atdd-dsl`) |
 | Rust | proptest | std `#[test]` | `#[ignore]` | `<feature>_scenarios.rs` + `<feature>_specifications.rs` (same module) |
 | Go | rapid o gopter | testing | `t.Skip("pending")` | `*_scenarios_test.go` + `*_specifications_test.go` |
 

@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 **Code examples in this skill use Python syntax for illustration only.** They are NOT prescriptive about target language. nWave is language-agnostic per the "genericity and agnosticism" mandate (2026-05-24).
 
-**Before applying TDD cycle**, detect the target project's language from manifest files: `package.json` → TypeScript/JS (jest/vitest); `Cargo.toml` → Rust (cargo test/proptest); `go.mod` → Go (testing/ginkgo); `pyproject.toml`/`setup.py`/`Pipfile` → Python (pytest/hypothesis); `pom.xml`/`build.gradle` → Java/Kotlin (JUnit5/jqwik); `*.csproj`/`*.fsproj` → C#/F# (xUnit/FsCheck); `Gemfile` → Ruby (RSpec); `Package.swift` → Swift (XCTest/swift-testing).
+**Before applying TDD cycle**, detect the target project's language from manifest files: `package.json` → TypeScript/JS (jest/vitest); `Cargo.toml` → Rust (cargo test/proptest); `go.mod` → Go (testing/ginkgo); `pyproject.toml`/`setup.py`/`Pipfile` → Python (pytest/hypothesis); `pom.xml`/`build.gradle` → Java (JUnit Jupiter/jqwik) / Kotlin (JUnit Jupiter/kotest-property, see `nw-kotlin`); `*.csproj`/`*.fsproj` → C#/F# (xUnit/FsCheck); `Gemfile` → Ruby (RSpec); `Package.swift` → Swift (XCTest/swift-testing).
 
 **When the target language is NOT Python**: adapt EVERY code example — replace Python imports, type hints, class/function syntax, test-framework specifics with target equivalents. Project conventions ALWAYS WIN over skill examples.
 

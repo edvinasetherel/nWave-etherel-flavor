@@ -34,7 +34,8 @@ After the acceptance designer produces scenarios, you MUST dispatch 4 parallel r
 1. pytest-bdd -- Python BDD framework
 2. Cucumber -- Ruby/JS BDD framework
 3. SpecFlow -- .NET BDD framework
-4. Custom -- user provides details
+4. Custom DSL -- executable specifications in code, four-layer spec/DSL/driver/system, no Gherkin (`nw-atdd-dsl`); default when the project already uses it or CLAUDE.md declares it
+5. Custom -- user provides details
 
 #### Decision 3: Integration Approach
 **Question**: How should integration tests connect to services?

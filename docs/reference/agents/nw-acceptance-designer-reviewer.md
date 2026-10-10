@@ -14,5 +14,6 @@ Use for review and critique tasks - Acceptance criteria and BDD review specialis
 ## Skills
 
 - [nw-ad-critique-dimensions](../skills/nw-ad-critique-dimensions.md) — Review dimensions for acceptance test quality - happy path bias, GWT compliance, business language purity, coverage completeness, walking skeleton user-centricity, priority validation, observable behavior assertions, traceability coverage, and walking skeleton boundary proof
+- [nw-atdd-dsl](../skills/nw-atdd-dsl.md) — Acceptance tests as executable specifications written in a custom in-code DSL (no Gherkin) - four layers (spec, DSL, driver, system), naming, assertions, data isolation, channel swapping, and how nWave mandates map onto DSL mode
 - [nw-bdd-methodology](../skills/nw-bdd-methodology.md) — BDD patterns for acceptance test design - Given-When-Then structure, scenario writing rules, pytest-bdd implementation, anti-patterns, and living documentation
 - [nw-test-design-mandates](../skills/nw-test-design-mandates.md) — Design mandates for acceptance tests - hexagonal boundary, business language abstraction, user journey completeness, pure function extraction, 3 Pillars (domain language / chained narrative / production composition), and the layered ATD discipline (Universe-bound assertion, layer-dependent PBT mode, two-tier acceptance, example-based sad paths)

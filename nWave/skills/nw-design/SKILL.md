@@ -2,7 +2,7 @@
 name: nw-design
 description: "Designs system architecture with C4 diagrams and technology selection. Routes to the right architect based on design scope (system, domain, application, or full stack). Two interaction modes: guide (collaborative Q&A) or propose (architect presents options with trade-offs)."
 user-invocable: true
-argument-hint: '[component-name] - Optional: --residuality --paradigm=[auto|oop|fp]'
+argument-hint: '[component-name] - Optional: --residuality --paradigm=[auto|oop|fp|hybrid]'
 ---
 
 # NW-DESIGN: Architecture Design
@@ -45,7 +45,7 @@ Rendered under `## Wave: DESIGN / [WHY|HOW] <Section>` only when requested via `
 | `rejected-alternatives` | [WHY] | Architectures weighed and rejected with one-paragraph reason per option |
 | `c4-narrative` | [HOW] | Long-form C4 walkthrough: System Context → Container → Component prose |
 | `evolution-scenarios` | [WHY] | Hypothetical future stress vectors and how the design absorbs them |
-| `paradigm-rationale` | [WHY] | Why FP/OOP was selected; comparison vs the alternative for this domain |
+| `paradigm-rationale` | [WHY] | Why pure OOP / pure FP / hybrid was selected; comparison vs the alternatives for this domain |
 | `reuse-analysis-deep-dive` | [WHY] | Per-row justification for every EXTEND vs CREATE NEW decision in the Reuse table |
 | `c4-component-diagrams` | [HOW] | Component-level C4 diagrams for complex subsystems (Mermaid) |
 | `expansion-catalog-rationale` | [WHY] | Why this set of expansions, why these defaults, why D10 enforces one-line descriptions |
@@ -89,7 +89,7 @@ Architecture decisions are driven by quality attributes, not pattern shopping. E
 1. **Understand the Problem** — review JTBD artifacts from DISCUSS. Ask: What are we building? For whom? Which quality attributes matter most? (scalability|maintainability|testability|time-to-market|fault tolerance|auditability). Gate: quality attribute priorities ranked.
 2. **Understand Constraints** — ask: Team size/experience? Timeline? Existing systems to integrate? Regulatory requirements? Operational maturity (CI/CD, monitoring)? Gate: constraints list documented.
 3. **Map Team Structure (Conway's Law)** — ask: How many teams? Communication patterns? Does proposed architecture match org chart? Gate: team-architecture alignment confirmed.
-4. **Select Development Paradigm** — identify primary language(s) from constraints, then: FP-native (Haskell|F#|Scala|Clojure|Elixir) → recommend Functional; OOP-native (Java|C#|Go) → recommend OOP; Multi-paradigm (TypeScript|Kotlin|Python|Rust|Swift) → present both, let user choose. After confirmation, ask user permission to write paradigm to project CLAUDE.md: FP: `This project follows the **functional programming** paradigm. Use @nw-functional-software-crafter for implementation.` OOP: `This project follows the **object-oriented** paradigm. Use @nw-software-crafter for implementation.` Default if user declines/unsure: OOP. Gate: paradigm selected and optionally written to CLAUDE.md.
+4. **Select Development Paradigm** — always ask the user to choose one of three: **Hybrid (default, recommended)** — functional in the small, object-oriented in the large: immutable domain values and pure rules, use cases as stateless functions taking their dependencies as parameters, ports as interfaces, adapters as classes with constructor injection, wiring in a composition root; **Pure OOP** — behaviour lives in objects (services as classes, rich domain objects); **Pure FP** — functions and data only (ports as function signatures, dependencies as function parameters, no classes). Exception: in languages without classes/interfaces (Haskell|Clojure|Elixir) hybrid does not apply — recommend Pure FP. After confirmation, ask user permission to write paradigm to project CLAUDE.md under `## Development Paradigm`: Hybrid: `This project follows the **hybrid** paradigm (functional core: immutable domain, use cases as functions; object-oriented structure: interfaces as ports, classes as adapters, constructor injection). Use @nw-software-crafter for implementation.` Pure OOP: `This project follows the **object-oriented** paradigm. Use @nw-software-crafter for implementation.` Pure FP: `This project follows the **functional programming** paradigm. Use @nw-functional-software-crafter for implementation.` Default if user declines/unsure: Hybrid. Gate: paradigm selected and optionally written to CLAUDE.md.
 5. **Reuse Analysis (MANDATORY — RCA F-1 fix)** — before designing ANY new component, search the existing codebase for components with overlapping responsibilities. For each overlap, decide "extend existing" or "justify new". Output a table:
 
    ```
@@ -105,7 +105,7 @@ Architecture decisions are driven by quality attributes, not pattern shopping. E
    - The reviewer MUST verify this table exists and challenge every "CREATE NEW" decision.
    - Gate: Reuse Analysis table present with zero unjustified CREATE NEW decisions.
 
-6. **Recommend Architecture Based on Drivers** — recommend based on quality attribute priorities|constraints|paradigm from steps 1-5. Default: modular monolith with dependency inversion (ports-and-adapters). Overrides require evidence. If functional paradigm: apply types-first design, composition pipelines, pure core / effect shell, effect boundaries as ports, immutable state — in architecture document only, no code snippets. Gate: architecture pattern selected with written rationale.
+6. **Recommend Architecture Based on Drivers** — recommend based on quality attribute priorities|constraints|paradigm from steps 1-5. Default: modular monolith with dependency inversion (ports-and-adapters). Overrides require evidence. If hybrid paradigm: functional core (immutable domain, use cases as functions) with object-oriented ports/adapters and a composition root. If functional paradigm: apply types-first design, composition pipelines, pure core / effect shell, effect boundaries as ports, immutable state — in architecture document only, no code snippets. Gate: architecture pattern selected with written rationale.
 6. **Stress Analysis** (HIDDEN — `--residuality` flag only) — when activated: apply complexity-science-based stress analysis (stressors|attractors|residues|incidence matrix|resilience modifications) using the `stress-analysis` skill. When not activated: skip entirely, do not mention. Gate: activated only when flag present.
 7. **Produce Deliverables** — write architecture document with component boundaries|tech stack|integration patterns. Produce C4 System Context diagram (Mermaid) — mandatory. Produce C4 Container diagram (Mermaid) — mandatory. Produce C4 Component diagrams (Mermaid) — only for complex subsystems. Write ADRs for significant decisions. Gate: mandatory C4 diagrams present, ADRs written.
 
@@ -243,7 +243,7 @@ Before completing DESIGN, produce `docs/feature/{feature-id}/design/wave-decisio
 
 ## Architecture Summary
 - Pattern: {e.g., modular monolith with ports-and-adapters}
-- Paradigm: {OOP|FP}
+- Paradigm: {Hybrid|OOP|FP}
 - Key components: {list top-level components}
 
 ## Reuse Analysis

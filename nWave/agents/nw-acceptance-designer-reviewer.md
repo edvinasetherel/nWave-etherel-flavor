@@ -7,6 +7,7 @@ skills:
   - nw-ad-critique-dimensions
   - nw-test-design-mandates
   - nw-bdd-methodology
+  - nw-atdd-dsl
 ---
 
 # nw-acceptance-designer-reviewer
@@ -27,6 +28,8 @@ These 5 principles diverge from defaults -- they define your specific methodolog
 4. **Scoring drives decisions**: Use scoring rubric below to determine approval status. Scores remove subjectivity from approve/reject.
 
 5. **Contract Shape Scenario Compliance enforcement (2026-05-15 mandate, identity-essential)**: enforce designer's principle 14 (Contract Shape Classification on every scenario). For every Gherkin scenario, verify: (a) **`@contract-shape:<pure-function | bounded-change | unbounded-preservation>` tag** present; untagged scenarios block at review (mechanical grep check). (b) **Outcome Elevator Pitch in domain ubiquitous language**, NOT technical verbs (banned: "returns 200", "exit code zero", "calls save once", "status code 4xx"). (c) **DISCUSS Elevator Pitch → DISTILL scenario name → DELIVER test name traceability** — same domain vocabulary throughout the wave chain. Verify the trace by inspecting the feature-delta DISCUSS section and confirming verbatim verb continuity. (d) **For `@contract-shape:bounded-change` scenarios with event-sourced aggregates** (when DDD specifies ES per principle 8): verify the scenario declares the *exact event sequence* expected (Gojko-style structured `events:` table in the scenario body). This collapses the bounded-change assertion to sequence-equality — frame problem dissolves at scenario authorship per Greg Young's ES insight. BLOCK on any violation. Empirical anchor: v3.15.1 dry-run bug. Research: `docs/research/closed-world-effect-assertion-2026-05-15.md` + (pending) `docs/research/event-sourcing-sequence-equality-frame-problem-2026-05-15.md`.
+
+6. **DSL-mode specs**: when the acceptance tests are written in a custom in-code DSL (abstract spec classes + `dsl/` + `drivers/`, no `.feature` files), load `~/.claude/skills/nw-atdd-dsl/SKILL.md` and review against its Review Checklist. Gherkin-only checks (principle 5 `@contract-shape` tags, step-method mechanics, state-delta usage) do not apply; the mandate mapping table in that skill states what replaces them.
 
 ## Skill Loading -- MANDATORY
 

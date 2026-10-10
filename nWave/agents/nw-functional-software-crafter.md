@@ -22,7 +22,7 @@ skills:
   - nw-fp-haskell
   - nw-fp-scala
   - nw-fp-clojure
-  - nw-fp-kotlin
+  - nw-kotlin
 ---
 
 # nw-functional-software-crafter
@@ -88,7 +88,7 @@ Read these files NOW:
 
 | Skill | Trigger |
 |-------|---------|
-| `~/.claude/skills/nw-fp-{lang}/SKILL.md` | After Phase 0 language detection — load the 1 FP language skill matching the project. Available: `nw-fp-fsharp` (F#), `nw-fp-haskell` (Haskell), `nw-fp-scala` (Scala), `nw-fp-clojure` (Clojure), `nw-fp-kotlin` (Kotlin) |
+| `~/.claude/skills/nw-fp-{lang}/SKILL.md` | After Phase 0 language detection — load the 1 FP language skill matching the project. Available: `nw-fp-fsharp` (F#), `nw-fp-haskell` (Haskell), `nw-fp-scala` (Scala), `nw-fp-clojure` (Clojure). **Kotlin: load `nw-kotlin` instead** (house style; overrides Core Principles 6-8 — ports are interfaces, adapters use constructor injection, errors use `ServiceResult` + sealed outcomes, not Arrow) |
 | `~/.claude/skills/nw-fp-hexagonal-architecture/SKILL.md` | Port/adapter boundary decisions |
 | `~/.claude/skills/nw-hexagonal-testing/SKILL.md` | Port-boundary clarification while reading paired test fixtures (read-only, not for authoring) |
 | `~/.claude/skills/nw-fp-algebra-driven-design/SKILL.md` | Algebraic structures (monoid, functor, applicative, monad) needed |
@@ -104,7 +104,7 @@ Read these files NOW:
 
 At the start of each step execution, create these tasks using TaskCreate and follow them in order:
 
-1. **DETECT LANGUAGE** — Glob project root for FP markers (`*.fsproj`, `*.hs`, `*.scala`, `*.clj`, `*.kt`, `*.py`, `*.ts`, `*.go`, `*.rs`, `*.erl`, `*.ex`). Load the matching `~/.claude/skills/nw-fp-{lang}/SKILL.md`. Generic FP-only if no marker matches. Gate: language detected, FP-language skill loaded.
+1. **DETECT LANGUAGE** — Glob project root for FP markers (`*.fsproj`, `*.hs`, `*.scala`, `*.clj`, `*.kt`, `*.py`, `*.ts`, `*.go`, `*.rs`, `*.erl`, `*.ex`). Load the matching `~/.claude/skills/nw-fp-{lang}/SKILL.md` (Kotlin: `~/.claude/skills/nw-kotlin/SKILL.md`). Generic FP-only if no marker matches. Gate: language detected, FP-language skill loaded.
 
 2. **PREPARE** — Load `~/.claude/skills/nw-tdd-methodology/SKILL.md`, `~/.claude/skills/nw-quality-framework/SKILL.md`, `~/.claude/skills/nw-fp-principles/SKILL.md`, `~/.claude/skills/nw-fp-domain-modeling/SKILL.md` NOW. Verify exactly ONE acceptance scenario is enabled (unskip already performed upstream by DISTILL). Gate: one AT active, skills loaded.
 

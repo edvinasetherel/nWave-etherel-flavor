@@ -291,7 +291,7 @@ other languages are bootstrap-on-demand templates (Epic 3+).
 | TypeScript | fast-check | Vitest/Jest | `it.skip(...)` | `*.scenarios.ts` + `*.specifications.ts` |
 | C# | FsCheck | xUnit | `[Fact(Skip="pending")]` | partial class `*Scenarios.cs` + `*Specifications.cs` |
 | Java | jqwik | JUnit | `@Disabled("pending")` | companion test class |
-| Kotlin | kotest-property | Kotest | `@Disabled` | extension functions split |
+| Kotlin | kotest-property (inside JUnit `@Test`) | JUnit Jupiter | `@Disabled("pending")` | DSL mode: abstract spec + DSL + drivers (`nw-atdd-dsl`) |
 | Rust | proptest | std `#[test]` | `#[ignore]` | `<feature>_scenarios.rs` + `<feature>_specifications.rs` (same module) |
 | Go | rapid o gopter | testing | `t.Skip("pending")` | `*_scenarios_test.go` + `*_specifications_test.go` |
 

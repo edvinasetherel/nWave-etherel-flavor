@@ -18,15 +18,15 @@
 
 | Name | Description | Skills |
 | --- | --- | --- |
-| [nw-acceptance-designer](nw-acceptance-designer.md) | Use for DISTILL wave — designs E2E acceptance tests from user stories and architecture using Given-When-Then format. EXPANDED scope (plan v3 §3.A, 2026-05-19) — exclusive test-expertise owner; authors ATs with maximum PBT + parametrize density, runs self-completeness audit (7-category taxonomy + 15-item checklist), enforces Mandate-12 step-reuse ≥4× target informational, consults DISCUSS+DESIGN+DEVOPS upstream waves for taxonomy population (C2/C5/C6/C7). Creates executable specifications that drive Outside-In TDD development. | 10 |
-| [nw-acceptance-designer-reviewer](nw-acceptance-designer-reviewer.md) | Use for review and critique tasks - Acceptance criteria and BDD review specialist. Runs on Haiku for cost efficiency. | 3 |
+| [nw-acceptance-designer](nw-acceptance-designer.md) | Use for DISTILL wave — designs E2E acceptance tests from user stories and architecture using Given-When-Then format. EXPANDED scope (plan v3 §3.A, 2026-05-19) — exclusive test-expertise owner; authors ATs with maximum PBT + parametrize density, runs self-completeness audit (7-category taxonomy + 15-item checklist), enforces Mandate-12 step-reuse ≥4× target informational, consults DISCUSS+DESIGN+DEVOPS upstream waves for taxonomy population (C2/C5/C6/C7). Creates executable specifications that drive Outside-In TDD development. | 11 |
+| [nw-acceptance-designer-reviewer](nw-acceptance-designer-reviewer.md) | Use for review and critique tasks - Acceptance criteria and BDD review specialist. Runs on Haiku for cost efficiency. | 4 |
 
 ## DELIVER
 
 | Name | Description | Skills |
 | --- | --- | --- |
 | [nw-functional-software-crafter](nw-functional-software-crafter.md) | DELIVER wave — SLIM functional crafter. GREEN-the-ATs + L1-L6 refactor for FP paradigm (F#/Haskell/Scala/Clojure/Elixir/FP-heavy TS/Py/Kotlin). Pure functions, pipeline composition, types-as-documentation. Test authoring (ATs + paired PBT) is owned by `nw-acceptance-designer`; this agent implements pure functions and refactors. Use when the project follows functional-first. | 19 |
-| [nw-software-crafter](nw-software-crafter.md) | DELIVER wave - SLIM scope (implementation + refactor expert). Crafter implements production code to satisfy ATs authored by acceptance-designer (DISTILL). Does NOT author tests. Follows the 3-phase RED -> GREEN -> COMMIT cycle (ADR-025). | 11 |
+| [nw-software-crafter](nw-software-crafter.md) | DELIVER wave - SLIM scope (implementation + refactor expert). Crafter implements production code to satisfy ATs authored by acceptance-designer (DISTILL). Does NOT author tests. Follows the 3-phase RED -> GREEN -> COMMIT cycle (ADR-025). | 12 |
 | [nw-software-crafter-reviewer](nw-software-crafter-reviewer.md) | Use for review and critique tasks. Code-quality + TDD-discipline review of Outside-In TDD implementations. Runs on Haiku for cost efficiency. | 3 |
 
 ## Other
@@ -58,8 +58,8 @@
 
 | Name | Wave | Description | Skills |
 | --- | --- | --- | --- |
-| [nw-acceptance-designer](nw-acceptance-designer.md) | DISTILL | Use for DISTILL wave — designs E2E acceptance tests from user stories and architecture using Given-When-Then format. EXPANDED scope (plan v3 §3.A, 2026-05-19) — exclusive test-expertise owner; authors ATs with maximum PBT + parametrize density, runs self-completeness audit (7-category taxonomy + 15-item checklist), enforces Mandate-12 step-reuse ≥4× target informational, consults DISCUSS+DESIGN+DEVOPS upstream waves for taxonomy population (C2/C5/C6/C7). Creates executable specifications that drive Outside-In TDD development. | 10 |
-| [nw-acceptance-designer-reviewer](nw-acceptance-designer-reviewer.md) | DISTILL | Use for review and critique tasks - Acceptance criteria and BDD review specialist. Runs on Haiku for cost efficiency. | 3 |
+| [nw-acceptance-designer](nw-acceptance-designer.md) | DISTILL | Use for DISTILL wave — designs E2E acceptance tests from user stories and architecture using Given-When-Then format. EXPANDED scope (plan v3 §3.A, 2026-05-19) — exclusive test-expertise owner; authors ATs with maximum PBT + parametrize density, runs self-completeness audit (7-category taxonomy + 15-item checklist), enforces Mandate-12 step-reuse ≥4× target informational, consults DISCUSS+DESIGN+DEVOPS upstream waves for taxonomy population (C2/C5/C6/C7). Creates executable specifications that drive Outside-In TDD development. | 11 |
+| [nw-acceptance-designer-reviewer](nw-acceptance-designer-reviewer.md) | DISTILL | Use for review and critique tasks - Acceptance criteria and BDD review specialist. Runs on Haiku for cost efficiency. | 4 |
 | [nw-agent-builder](nw-agent-builder.md) | Other | Use when creating new AI agents, validating agent specifications, optimizing command definitions, or ensuring compliance with Claude Code best practices. Creates focused, research-validated agents (200-400 lines) with Skills for domain knowledge. Also optimizes bloated command files into lean declarative definitions. | 6 |
 | [nw-agent-builder-reviewer](nw-agent-builder-reviewer.md) | Other | Use for review and critique tasks - Agent design and quality review specialist. Runs on Haiku for cost efficiency. | 2 |
 | [nw-data-engineer](nw-data-engineer.md) | Other | Use for database technology selection, data architecture design, query optimization, schema design, security implementation, and governance guidance. Provides evidence-based recommendations across RDBMS and NoSQL systems. | 4 |
@@ -82,7 +82,7 @@
 | [nw-researcher](nw-researcher.md) | Other | Use for evidence-driven research with source verification. Gathers knowledge from web and files, cross-references across multiple sources, and produces cited research documents. | 4 |
 | [nw-researcher-reviewer](nw-researcher-reviewer.md) | Other | Use for review and critique tasks - Research quality and evidence review specialist. Runs on Haiku for cost efficiency. | 1 |
 | [nw-skill-reviewer](nw-skill-reviewer.md) | Other | Use to review SKILL.md quality during DISTILL/DELIVER verification when deliverable_type is `plugin` or `skill`. Validates skill structure, scope discipline, frontmatter, and domain-knowledge quality. Thin reviewer — reuses nw-agent-builder skill assets. Runs on Haiku for cost efficiency. | 2 |
-| [nw-software-crafter](nw-software-crafter.md) | DELIVER | DELIVER wave - SLIM scope (implementation + refactor expert). Crafter implements production code to satisfy ATs authored by acceptance-designer (DISTILL). Does NOT author tests. Follows the 3-phase RED -> GREEN -> COMMIT cycle (ADR-025). | 11 |
+| [nw-software-crafter](nw-software-crafter.md) | DELIVER | DELIVER wave - SLIM scope (implementation + refactor expert). Crafter implements production code to satisfy ATs authored by acceptance-designer (DISTILL). Does NOT author tests. Follows the 3-phase RED -> GREEN -> COMMIT cycle (ADR-025). | 12 |
 | [nw-software-crafter-reviewer](nw-software-crafter-reviewer.md) | DELIVER | Use for review and critique tasks. Code-quality + TDD-discipline review of Outside-In TDD implementations. Runs on Haiku for cost efficiency. | 3 |
 | [nw-solution-architect](nw-solution-architect.md) | DESIGN | Use for DESIGN wave - collaborates with user to define system architecture, component boundaries, technology selection, and creates architecture documents with business value focus. Hands off to acceptance-designer. | 7 |
 | [nw-solution-architect-reviewer](nw-solution-architect-reviewer.md) | DESIGN | Architecture design and patterns review specialist - Optimized for cost-efficient review operations using Haiku model. | 2 |

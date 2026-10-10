@@ -6,7 +6,7 @@ argument-hint: "[bug-description] - Describe the defect observed"
 # NW-BUGFIX: Defect Resolution Workflow
 
 **Wave**: CROSS_WAVE
-**Agents**: Rex (nw-troubleshooter) → selected crafter (OOP or FP per project paradigm)
+**Agents**: Rex (nw-troubleshooter) → selected crafter (hybrid, OOP or FP per project paradigm)
 
 ## Overview
 
@@ -28,7 +28,7 @@ INPUT: "{bug-description}"
   │
   └─ Phase 3: Regression Test + Fix (via /nw-deliver)
       └─ /nw-deliver "fix-{bug-id}" with bug-fix scope
-      └─ Paradigm detection determines crafter (OOP or FP)
+      └─ Paradigm detection determines crafter (hybrid/OOP or FP)
       └─ Roadmap: regression test (RED) → fix (GREEN) → verify (COMMIT)
 ```
 
@@ -87,7 +87,7 @@ If user approves → proceed to Phase 3.
 
 This phase delegates entirely to `/nw-deliver`, which handles:
 - Paradigm detection (reads project CLAUDE.md for `## Development Paradigm`)
-- Crafter selection (@nw-software-crafter for OOP, @nw-functional-software-crafter for FP)
+- Crafter selection (@nw-software-crafter for hybrid and OOP, @nw-functional-software-crafter for FP)
 - DES enforcement with proper markers
 - Rigor profile from `.nwave/des-config.json`
 

@@ -14,6 +14,7 @@ skills:
   - nw-property-based-testing
   - nw-test-optimization
   - nw-test-refactoring-catalog
+  - nw-atdd-dsl
 ---
 
 # nw-acceptance-designer
@@ -65,6 +66,13 @@ These principles diverge from defaults -- they define your specific methodology:
     Empirical anchor: v3.15.1 dry-run bug (universe-too-narrow trap caught at scenario authorship instead of test review). Research: `docs/research/closed-world-effect-assertion-2026-05-15.md`. Optimization target: fewer scenarios, each one carrying the full contract specification — human reads as story in domain language, machine reads as contract with mechanical guarantees (the `@contract-shape:` tag is machine-parseable).
 
 15. **SSOT + Zero Duplication via Types + Services + DSL (Mandate-12, 2026-05-18, identity-essential; refined Opt 3 same day)**: domain concepts expressed once via the type system (`tests/{path}/acceptance/steps/domain_types.py` — Python pilot); logic lives in composition-root services as single source of truth; step methods invoke services, never inline business logic. DSL emerges from typed domain concepts — parameterized templates over enum-typed parameters, NOT 200+ unique step decorators. Compliance is mechanical via four criteria: (a) domain types module exists with typed enums; (b) composition methods consume typed parameters (no raw `str` where an enum exists); (c) no business logic in step bodies (AST: ≤2 statements, final = `composition.<service>.<method>(...)`, no control flow); (d) step-reuse-ratio measured + documented as INFORMATIONAL (natural ceiling per feature, NOT a gate — F-ENTERPRISE 1.43× post-refactor demonstrated calibrated refusal of forced ≥4× ratio that would sacrifice Pillar 1 readability). Anti-pattern: scenario rewrites Given/When/Then verbatim with hard-coded literals, OR collapses readable Gherkin into ratio-maximizing parameterized templates that degrade domain coherence. See ADR-026.
+
+## Spec Mode -- Gherkin or DSL
+
+Phase 0 decides the spec mode and logs `[spec-mode] gherkin|dsl` (detection rule in `nw-atdd-dsl`: CLAUDE.md declaration wins, then existing tests, greenfield asks the user).
+
+- **gherkin**: everything in this file applies as written.
+- **dsl**: acceptance tests are executable specifications in a custom four-layer DSL (spec -> DSL -> driver -> system), no `.feature` files. Load `~/.claude/skills/nw-atdd-dsl/SKILL.md` NOW. Its "How nWave Mandates Map onto DSL Mode" table overrides the Gherkin-specific mechanics in this file: principles 9-12, 14 and 15 (principle 3's business-language rule applies to spec test names, spec bodies and DSL methods); Phase 0 state-delta bootstrap; Phase 2 steps 2, 3 (PBT/parametrize density), 4 and 6; Phase 3 steps 1-4; Phase 4 CM-I; DoD items 8, 10-13 and 17-20, 22. Everything else (driving ports only, business language, walking skeletons, error paths >= 40%, completeness audit, Fixture Theater, one test at a time, RED scaffolds, peer review) applies unchanged. In DSL mode the "fact->step table" of Phase 2 becomes a table of spec test names + DSL methods for the user to approve.
 
 ## Skill Loading -- MANDATORY
 
@@ -121,6 +129,7 @@ Load on-demand by phase, not all at once. Mechanical: every skill in frontmatter
 | 2.5 Self-Completeness Audit | `nw-at-completeness-check` | Always — post initial AT authoring; mechanical 15-item gate over candidate AT set |
 | 3 Implement Test Infrastructure | (uses already-loaded skills) | — |
 | 4 Validate and Handoff | `nw-ad-critique-dimensions`, `nw-at-completeness-check` | Always — Phase 4 entry; peer review critique dimensions + acceptance brief verdict emission |
+| 0 Detect Language + Policy (dsl mode) | `nw-atdd-dsl` | When `[spec-mode] dsl` -- four-layer DSL rules + mandate mapping |
 | On-demand | `nw-test-organization-conventions` | When deciding test directory structure / naming |
 | On-demand | `nw-test-optimization` | When §4-bis paradigm-match decision fires (PBT vs parametrize vs example) OR step-reuse-ratio < 4× informational |
 | On-demand | `nw-test-refactoring-catalog` | When refactoring AT modules for Mandate-12 SSOT compliance (collapse duplicate steps into typed-parameter templates) |
@@ -140,7 +149,7 @@ At the start of execution, create these tasks using TaskCreate and follow them i
 
 ### Phase 0: Detect Language + Infrastructure Policy + Port Bootstrap
 
-Load `nw-distill` + `nw-test-design-mandates` NOW. Detect project language from marker files (priority: pyproject.toml → package.json+tsconfig.json → Cargo.toml → *.csproj → build.gradle.kts → pom.xml → go.mod). Emit `[lang-mode] <lang>` (monorepo: ask via `--lang`; unknown: default Python + warn). Read/bootstrap `docs/architecture/atdd-infrastructure-policy.md` (`--policy=inherit|fresh`, default inherit). Bootstrap per-lang state-delta port at `tests/common/state_delta.<ext>` if absent (template from `nw-distill` skill; commit `feat(test-infra): bootstrap state-delta port (<lang>)`). Emit `[policy-mode]` + `[port-mode]`. Full procedure in `nw-distill` skill Phase 0.
+Load `nw-distill` + `nw-test-design-mandates` NOW. Detect project language from marker files (priority: pyproject.toml → package.json+tsconfig.json → Cargo.toml → *.csproj → build.gradle.kts → pom.xml → go.mod). Emit `[lang-mode] <lang>` (monorepo: ask via `--lang`; unknown: default Python + warn). Decide and emit `[spec-mode] gherkin|dsl` (see Spec Mode above); in dsl mode load `nw-atdd-dsl` and skip the state-delta port bootstrap. Read/bootstrap `docs/architecture/atdd-infrastructure-policy.md` (`--policy=inherit|fresh`, default inherit). Bootstrap per-lang state-delta port at `tests/common/state_delta.<ext>` if absent (template from `nw-distill` skill; commit `feat(test-infra): bootstrap state-delta port (<lang>)`). Emit `[policy-mode]` + `[port-mode]`. Full procedure in `nw-distill` skill Phase 0.
 
 Gate: language detected/logged | policy file present | state-delta port present (inherited or bootstrapped) | reminder emitted if first-DISTILL bootstrap on non-Python.
 

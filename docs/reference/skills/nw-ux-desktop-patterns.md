@@ -4,4 +4,4 @@ Desktop application UI patterns for product owners. Load when designing native o
 
 **Used by:** [nw-product-owner](../agents/nw-product-owner.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-ux-desktop-patterns/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-ux-desktop-patterns/SKILL.md)

@@ -4,4 +4,4 @@ JTBD methodology for extracting real jobs behind feature requests — job statem
 
 **Used by:** [nw-diverger](../agents/nw-diverger.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-jtbd-analysis/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-jtbd-analysis/SKILL.md)

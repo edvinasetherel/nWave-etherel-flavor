@@ -4,4 +4,4 @@ Critique dimensions, severity framework, verdict decision matrix, and review out
 
 **Used by:** [nw-documentarist-reviewer](../agents/nw-documentarist-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-dr-review-criteria/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-dr-review-criteria/SKILL.md)

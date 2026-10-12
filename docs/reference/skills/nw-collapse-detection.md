@@ -4,4 +4,4 @@ Documentation collapse anti-patterns - detection rules, bad examples, and remedi
 
 **Used by:** [nw-documentarist](../agents/nw-documentarist.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-collapse-detection/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-collapse-detection/SKILL.md)

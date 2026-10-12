@@ -4,4 +4,4 @@ Structured divergent thinking techniques — HMW framing, SCAMPER, Crazy 8s mech
 
 **Used by:** [nw-diverger](../agents/nw-diverger.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-brainstorming/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-brainstorming/SKILL.md)

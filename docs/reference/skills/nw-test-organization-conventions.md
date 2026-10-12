@@ -4,4 +4,4 @@ Test directory structure patterns by architecture style, language conventions, n
 
 **Used by:** [nw-acceptance-designer](../agents/nw-acceptance-designer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-test-organization-conventions/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-test-organization-conventions/SKILL.md)

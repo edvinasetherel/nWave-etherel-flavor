@@ -4,4 +4,4 @@ Platform design review critique dimensions and severity levels. Load when review
 
 **Used by:** [nw-platform-architect-reviewer](../agents/nw-platform-architect-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-par-critique-dimensions/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-par-critique-dimensions/SKILL.md)

@@ -4,4 +4,4 @@ Quality gates - 11 commit readiness gates, build/test protocol, validation check
 
 **Used by:** [nw-functional-software-crafter](../agents/nw-functional-software-crafter.md), [nw-software-crafter](../agents/nw-software-crafter.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-quality-framework/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-quality-framework/SKILL.md)

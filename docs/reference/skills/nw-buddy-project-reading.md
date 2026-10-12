@@ -4,4 +4,4 @@ How the nWave buddy agent reads a project to answer questions — detection, ord
 
 **Used by:** [nw-nwave-buddy](../agents/nw-nwave-buddy.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-buddy-project-reading/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-buddy-project-reading/SKILL.md)

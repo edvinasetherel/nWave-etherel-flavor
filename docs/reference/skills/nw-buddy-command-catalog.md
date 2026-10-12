@@ -4,4 +4,4 @@ All /nw-* commands — what they do, when to use them, which agent they invoke. 
 
 **Used by:** [nw-nwave-buddy](../agents/nw-nwave-buddy.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-buddy-command-catalog/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-buddy-command-catalog/SKILL.md)

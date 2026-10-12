@@ -30,8 +30,10 @@ from scripts.shared.agent_catalog import (  # noqa: E402
 )
 
 
-# Public source repo, for linking released skills to browsable source.
-GITHUB_REPO = "https://github.com/nWave-ai/nWave"
+# Repo that hosts the skill sources linked from generated docs. Differs from
+# upstream (nWave-ai/nWave) on purpose: this fork ships skills upstream lacks
+# and modifies others, so upstream links would be broken or show other content.
+FORK_SOURCE_REPO = "https://github.com/edvinasetherel/nWave-etherel-flavor"
 
 
 class DocgenError(Exception):
@@ -468,7 +470,7 @@ def _skill_source_url(skill: Skill) -> str:
         rel = "/".join(("nWave", *parts[skills_index:]))
     else:
         rel = f"nWave/skills/{skill['agent_dir']}/{Path(skill['source_path']).name}"
-    return f"{GITHUB_REPO}/blob/main/{rel}"
+    return f"{FORK_SOURCE_REPO}/blob/main/{rel}"
 
 
 def _is_released(skill: Skill, released: set[str] | None) -> bool:

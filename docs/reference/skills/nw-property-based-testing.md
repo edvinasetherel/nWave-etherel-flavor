@@ -4,4 +4,4 @@ Property-based testing strategies, mutation testing, shrinking, and combined PBT
 
 **Used by:** [nw-acceptance-designer](../agents/nw-acceptance-designer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-property-based-testing/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-property-based-testing/SKILL.md)

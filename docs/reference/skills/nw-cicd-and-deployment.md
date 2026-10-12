@@ -4,4 +4,4 @@ CI/CD pipeline design methodology, deployment strategies, GitHub Actions pattern
 
 **Used by:** [nw-platform-architect](../agents/nw-platform-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-cicd-and-deployment/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-cicd-and-deployment/SKILL.md)

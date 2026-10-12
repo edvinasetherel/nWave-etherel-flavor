@@ -11,6 +11,7 @@ ignore_urls:
   # by design (docgen.py, released skills only) — silence the "prefer relative"
   # nudge for those.
   - nWave-ai/nWave/blob/main/nWave/skills
+  - edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills
   # - nWave-ai/nwave-dev        # example: this private repo
   # - nWave-ai/nWave-beta       # example: pre-release channel
 

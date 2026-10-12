@@ -4,4 +4,4 @@ Single Source of Truth detection — where truth lives in an nWave repo and how 
 
 **Used by:** [nw-nwave-buddy](../agents/nw-nwave-buddy.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-buddy-ssot-knowledge/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-buddy-ssot-knowledge/SKILL.md)

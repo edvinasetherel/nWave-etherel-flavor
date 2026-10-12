@@ -4,4 +4,4 @@ Algebra-driven API design with monoids, semigroups, and interpreters via algebra
 
 **Used by:** [nw-functional-software-crafter](../agents/nw-functional-software-crafter.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-fp-algebra-driven-design/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-fp-algebra-driven-design/SKILL.md)

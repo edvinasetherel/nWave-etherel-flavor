@@ -4,4 +4,4 @@ Review criteria for the nw-diverger-reviewer — validates JTBD rigor, research 
 
 **Used by:** [nw-diverger-reviewer](../agents/nw-diverger-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-diverger-review-criteria/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-diverger-review-criteria/SKILL.md)

@@ -4,4 +4,4 @@ Event Modeling facilitation technique — brainstorm events, identify commands a
 
 **Used by:** [nw-ddd-architect](../agents/nw-ddd-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-ddd-event-modeling/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-ddd-event-modeling/SKILL.md)

@@ -4,4 +4,4 @@ Applies the Refactoring Priority Premise (RPP) levels L1-L6 for systematic code 
 
 **Used by:** [nw-functional-software-crafter](../agents/nw-functional-software-crafter.md), [nw-software-crafter](../agents/nw-software-crafter.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-refactor/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-refactor/SKILL.md)

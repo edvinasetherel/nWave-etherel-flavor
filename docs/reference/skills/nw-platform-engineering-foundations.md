@@ -4,4 +4,4 @@ Foundational platform engineering knowledge from key references -- Continuous De
 
 **Used by:** [nw-platform-architect](../agents/nw-platform-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-platform-engineering-foundations/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-platform-engineering-foundations/SKILL.md)

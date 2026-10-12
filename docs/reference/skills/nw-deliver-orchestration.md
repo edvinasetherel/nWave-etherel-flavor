@@ -4,4 +4,4 @@ DELIVER wave orchestration workflow -- 9 phases from baseline to finalization. L
 
 **Used by:** [nw-platform-architect](../agents/nw-platform-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-deliver-orchestration/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-deliver-orchestration/SKILL.md)

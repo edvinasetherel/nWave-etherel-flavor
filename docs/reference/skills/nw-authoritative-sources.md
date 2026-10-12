@@ -4,4 +4,4 @@ Domain-specific authoritative source databases, search strategies by topic categ
 
 **Used by:** [nw-researcher](../agents/nw-researcher.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-authoritative-sources/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-authoritative-sources/SKILL.md)

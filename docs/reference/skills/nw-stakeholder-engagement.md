@@ -4,4 +4,4 @@ Demonstration preparation, audience-tailored presentations, feedback collection,
 
 **Used by:** [nw-platform-architect](../agents/nw-platform-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-stakeholder-engagement/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-stakeholder-engagement/SKILL.md)

@@ -4,4 +4,4 @@ Tool safety protocols, adversarial output validation, error recovery patterns, a
 
 **Used by:** [nw-researcher](../agents/nw-researcher.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-operational-safety/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-operational-safety/SKILL.md)

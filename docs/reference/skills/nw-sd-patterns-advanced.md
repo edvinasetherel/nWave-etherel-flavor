@@ -4,4 +4,4 @@ Advanced distributed patterns - event sourcing, CQRS, saga, stream processing, a
 
 **Used by:** [nw-system-designer](../agents/nw-system-designer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-sd-patterns-advanced/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-sd-patterns-advanced/SKILL.md)

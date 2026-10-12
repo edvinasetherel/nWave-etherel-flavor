@@ -4,4 +4,4 @@ YAML output format and approval criteria for platform design reviews. Load when 
 
 **Used by:** [nw-platform-architect-reviewer](../agents/nw-platform-architect-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-review-output-format/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-review-output-format/SKILL.md)

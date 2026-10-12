@@ -4,4 +4,4 @@ Outcome KPI definition methodology - synthesizes Who Does What By How Much (Goth
 
 **Used by:** [nw-product-owner](../agents/nw-product-owner.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-outcome-kpi-framework/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-outcome-kpi-framework/SKILL.md)

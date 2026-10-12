@@ -4,4 +4,4 @@ User story mapping for backlog management and outcome-based prioritization. Load
 
 **Used by:** [nw-product-owner](../agents/nw-product-owner.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-user-story-mapping/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-user-story-mapping/SKILL.md)

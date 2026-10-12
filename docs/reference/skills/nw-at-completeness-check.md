@@ -4,4 +4,4 @@ Canonical AT completeness gate — research-anchored 7-category taxonomy (C1-C7)
 
 **Used by:** [nw-acceptance-designer](../agents/nw-acceptance-designer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-at-completeness-check/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-at-completeness-check/SKILL.md)

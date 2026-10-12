@@ -4,4 +4,4 @@ Advanced architecture stress analysis methodology for designing systems that sur
 
 **Used by:** [nw-solution-architect](../agents/nw-solution-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-stress-analysis/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-stress-analysis/SKILL.md)

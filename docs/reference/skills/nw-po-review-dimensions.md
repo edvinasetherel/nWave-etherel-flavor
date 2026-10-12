@@ -4,4 +4,4 @@ Requirements quality critique dimensions for peer review - confirmation bias det
 
 **Used by:** [nw-product-owner](../agents/nw-product-owner.md), [nw-product-owner-reviewer](../agents/nw-product-owner-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-po-review-dimensions/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-po-review-dimensions/SKILL.md)

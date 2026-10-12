@@ -4,4 +4,4 @@ Infrastructure as Code patterns (Terraform, Kubernetes), observability design (S
 
 **Used by:** [nw-platform-architect](../agents/nw-platform-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-infrastructure-and-observability/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-infrastructure-and-observability/SKILL.md)

@@ -4,4 +4,4 @@ Rollback procedures, risk assessment, pre/post-deployment validation, and contin
 
 **Used by:** [nw-platform-architect](../agents/nw-platform-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-deployment-strategies/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-deployment-strategies/SKILL.md)

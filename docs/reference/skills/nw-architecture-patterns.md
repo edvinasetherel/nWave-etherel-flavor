@@ -4,4 +4,4 @@ Comprehensive architecture patterns, methodologies, quality frameworks, and eval
 
 **Used by:** [nw-solution-architect](../agents/nw-solution-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-architecture-patterns/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-architecture-patterns/SKILL.md)

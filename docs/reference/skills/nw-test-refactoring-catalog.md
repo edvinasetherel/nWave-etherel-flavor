@@ -4,4 +4,4 @@ Detailed refactoring mechanics with step-by-step procedures, and test code smell
 
 **Used by:** [nw-acceptance-designer](../agents/nw-acceptance-designer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-test-refactoring-catalog/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-test-refactoring-catalog/SKILL.md)

@@ -4,4 +4,4 @@ SQL and NoSQL query optimization techniques, indexing strategies, execution plan
 
 **Used by:** [nw-data-engineer](../agents/nw-data-engineer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-query-optimization/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-query-optimization/SKILL.md)

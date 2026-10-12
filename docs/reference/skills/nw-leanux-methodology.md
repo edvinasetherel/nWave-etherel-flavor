@@ -4,4 +4,4 @@ LeanUX backlog management methodology - user story template, story sizing, story
 
 **Used by:** [nw-product-owner](../agents/nw-product-owner.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-leanux-methodology/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-leanux-methodology/SKILL.md)

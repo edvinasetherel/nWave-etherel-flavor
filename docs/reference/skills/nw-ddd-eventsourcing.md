@@ -4,4 +4,4 @@ Event Sourcing and CQRS as DDD implementation patterns — when to use, aggregat
 
 **Used by:** [nw-ddd-architect](../agents/nw-ddd-architect.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-ddd-eventsourcing/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-ddd-eventsourcing/SKILL.md)

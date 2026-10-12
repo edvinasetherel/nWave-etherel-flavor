@@ -4,4 +4,4 @@ Best practices for command definition files - size targets, declarative template
 
 **Used by:** [nw-agent-builder](../agents/nw-agent-builder.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-command-design-patterns/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-command-design-patterns/SKILL.md)

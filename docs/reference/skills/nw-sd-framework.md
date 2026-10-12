@@ -4,4 +4,4 @@
 
 **Used by:** [nw-system-designer](../agents/nw-system-designer.md), [nw-system-designer-reviewer](../agents/nw-system-designer-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-sd-framework/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-sd-framework/SKILL.md)

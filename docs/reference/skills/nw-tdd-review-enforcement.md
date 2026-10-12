@@ -4,4 +4,4 @@ Test design mandate enforcement, test budget validation, TDD phase validation (3
 
 **Used by:** [nw-software-crafter-reviewer](../agents/nw-software-crafter-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-tdd-review-enforcement/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-tdd-review-enforcement/SKILL.md)

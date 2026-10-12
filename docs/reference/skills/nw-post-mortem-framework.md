@@ -4,4 +4,4 @@ Blameless post-mortem structure, incident timeline reconstruction, response eval
 
 **Used by:** [nw-troubleshooter](../agents/nw-troubleshooter.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-post-mortem-framework/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-post-mortem-framework/SKILL.md)

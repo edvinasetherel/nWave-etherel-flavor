@@ -4,4 +4,4 @@ Detailed review process, v2 validation checklist, and scoring methodology for ag
 
 **Used by:** [nw-agent-builder-reviewer](../agents/nw-agent-builder-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-review-workflow/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-review-workflow/SKILL.md)

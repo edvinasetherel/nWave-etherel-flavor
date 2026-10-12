@@ -4,4 +4,4 @@ Definition of Ready checklist criteria, antipattern detection patterns, UAT qual
 
 **Used by:** [nw-product-owner-reviewer](../agents/nw-product-owner-reviewer.md)
 
-**Source:** [SKILL.md on GitHub](https://github.com/nWave-ai/nWave/blob/main/nWave/skills/nw-dor-validation/SKILL.md)
+**Source:** [SKILL.md on GitHub](https://github.com/edvinasetherel/nWave-etherel-flavor/blob/main/nWave/skills/nw-dor-validation/SKILL.md)

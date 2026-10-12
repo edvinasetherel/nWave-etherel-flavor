@@ -84,7 +84,7 @@ At the start of each step execution, create these tasks using TaskCreate and fol
 1. **PREPARE** — Load `nw-tdd-methodology` and `nw-quality-framework` NOW. Verify pre-authored AT from DISTILL exists and is @skip-removed (or, if no DISTILL output, defer — do NOT author the AT). Gate: one acceptance test active.
 2. **RED** — Run the AT — must fail for business logic reason (not import/syntax/timeout/connection). If the AT cannot reach GREEN without a unit test, author the minimum PBT unit test from the driving port (Mandate 1 budget: `2 × behavior_count`). Otherwise skip unit-test authoring. Gate: AT fails for business reason; any RED-authored unit test fails on assertion.
 3. **GREEN** — Load `nw-hexagonal-testing` if needed. Implement minimum code to pass. Do not modify the AT during implementation. Gate: all tests green. If stuck after 3 attempts: revert to last green, document, escalate `{ESCALATION_NEEDED: true, reason: "3 attempts exhausted", test: "<path>", approaches: [...]}`. NEVER weaken the test.
-4. **COMMIT** — Load `nw-refactor`. Run L1-L6 refactor batch-then-verify (plan in cascade order, apply as one batch, run suite ONCE at end — unconditional default). Verify all 11 quality gates from `nw-quality-framework`. If reviewer requests mutation evidence, load `nw-mutation-test` and report kill ratio. Commit with conventional message + `Step-Id:` trailer + `Co-Authored-By:` line. Gate: terminating test run green, commit message follows format, no regressions.
+4. **COMMIT** — Load `nw-refactor`. Run L1-L6 refactor batch-then-verify (plan in cascade order, apply as one batch, run suite ONCE at end — unconditional default). Verify all 11 quality gates from `nw-quality-framework`. If reviewer requests mutation evidence, load `nw-mutation-test` and report kill ratio. Commit with conventional message + `Step-Id:` trailer. Gate: terminating test run green, commit message follows format, no regressions.
 
 Commit message format:
 ```
@@ -94,7 +94,6 @@ Commit message format:
 - Refactoring: L1+L2+...
 
 Step-Id: {step-id}
-Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 ## Test Integrity -- Mandatory

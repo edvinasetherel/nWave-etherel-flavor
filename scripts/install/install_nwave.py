@@ -79,7 +79,6 @@ try:
     from scripts.install.installation_verifier import InstallationVerifier
     from scripts.install.output_formatter import format_error
     from scripts.install.plugins.agents_plugin import AgentsPlugin
-    from scripts.install.plugins.attribution_plugin import AttributionPlugin
     from scripts.install.plugins.base import InstallContext
     from scripts.install.plugins.codex_agents_plugin import CodexAgentsPlugin
     from scripts.install.plugins.codex_des_plugin import CodexDESPlugin
@@ -119,7 +118,6 @@ except ImportError:
     from installation_verifier import InstallationVerifier
     from output_formatter import format_error
     from plugins.agents_plugin import AgentsPlugin
-    from plugins.attribution_plugin import AttributionPlugin
     from plugins.base import InstallContext
     from plugins.codex_agents_plugin import CodexAgentsPlugin
     from plugins.codex_des_plugin import CodexDESPlugin
@@ -475,7 +473,6 @@ class NWaveInstaller:
         registry.register(UtilitiesPlugin())
         registry.register(DESPlugin())
         registry.register(ReviewerSigningPlugin())
-        registry.register(AttributionPlugin())
         # OpenCode plugins (registered when opencode detected)
         if target_platforms and "opencode" in target_platforms:
             opencode_skills = OpenCodeSkillsPlugin()

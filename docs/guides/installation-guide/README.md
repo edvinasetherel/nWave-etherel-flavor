@@ -19,7 +19,7 @@ If you upgrade from an earlier version, run the installer again to clean up old 
 | Team rollout | **CLI** | Same command format everywhere |
 | Contributing | **CLI** | Dev scripts, internals access |
 
-> **Why not Plugin?** The plugin marketplace install is currently missing DES enforcement, attribution hooks, and rigor profiles. It also uses a different command format (`/nw:deliver` vs `/nw-deliver`) due to Claude Code's plugin namespace system. We recommend CLI install for the full nWave experience. See [issue #31](https://github.com/nWave-ai/nWave/issues/31) for details.
+> **Why not Plugin?** The plugin marketplace install is currently missing DES enforcement and rigor profiles. It also uses a different command format (`/nw:deliver` vs `/nw-deliver`) due to Claude Code's plugin namespace system. We recommend CLI install for the full nWave experience. See [issue #31](https://github.com/nWave-ai/nWave/issues/31) for details.
 
 Running a different editor or CLI? This guide also covers **OpenCode** and the **Codex CLI** further down, plus the plugin marketplace.
 
@@ -267,7 +267,7 @@ For detailed setup and workflow, see **[Installing for Codex CLI](../installing-
 
 ## Plugin (Beta Preview — Not Feature-Complete)
 
-> **Warning**: The plugin install is missing DES enforcement, attribution hooks, rigor profiles, and uses a different command format (`/nw:deliver` instead of `/nw-deliver`). Use CLI install above for the full experience.
+> **Warning**: The plugin install is missing DES enforcement and rigor profiles, and uses a different command format (`/nw:deliver` instead of `/nw-deliver`). Use CLI install above for the full experience.
 
 The plugin method installs nWave directly from the Claude Code marketplace. No Python or pipx required.
 
@@ -280,7 +280,7 @@ From Claude Code, run:
 
 Restart Claude Code and type `/nw-` to see all available commands.
 
-> **The plugin method is in beta preview and NOT feature-complete.** It provides agents and skills but NOT DES enforcement, attribution, or rigor profiles. Commands use `/nw:deliver` format (not `/nw-deliver`). For the full experience, use the CLI method above.
+> **The plugin method is in beta preview and NOT feature-complete.** It provides agents and skills but NOT DES enforcement or rigor profiles. Commands use `/nw:deliver` format (not `/nw-deliver`). For the full experience, use the CLI method above.
 
 ## What Gets Installed
 
@@ -330,42 +330,15 @@ Commit `.nwave/local-config.json` so teammates inherit the same nWave state. For
 
 ## Commit Attribution
 
-Installation enables commit attribution **by default**. It adds a dual
-`Co-Authored-By` trailer (Claude + nWave) to commits Claude makes, by writing a
-managed string to the `attribution.commit` key in `~/.claude/settings.json`:
+nWave adds **no** attribution to your work: it never appends a
+`Co-Authored-By` trailer or any other credit line to commits, commit messages
+or PR descriptions.
 
-```jsonc
-"attribution": {
-  "commit": "🤖 Generated with Claude Code\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nCo-Authored-By: nWave <nwave@nwave.ai>",
-  "pr": "…"
-}
-```
-
-Toggle it with the CLI (`nwave-ai` must be on your PATH — see
-[`nwave-ai` not found](#nwave-ai-not-found-after-install); from a source
-checkout use `uv run nwave-ai …` instead):
-
-```bash
-nwave-ai attribution status   # show current state
-nwave-ai attribution off      # remove the nWave credit (deletes the attribution key)
-nwave-ai attribution on       # re-enable it
-```
-
-> **⚠️ Changes apply to new sessions only.** Claude Code reads `attribution.commit`
-> when a session **starts**, not per commit. After toggling, **restart Claude** for
-> it to take effect — and do **not** `/resume` a conversation created before the
-> change, because a resumed session replays its original setting and will keep
-> using the old value. A commit reflects the current setting only if it comes from
-> a session created *after* the change.
-
-`attribution off` removes only nWave's credit. Claude Code's **own**
-co-authorship line (`🤖 Generated with Claude Code` + `Co-Authored-By: Claude`) is
-controlled separately by Claude Code's `includeCoAuthoredBy` setting, which nWave
-does not change. Set `"includeCoAuthoredBy": false` in `~/.claude/settings.json`
-to suppress that as well.
-
-Attribution is **global** (it lives in `~/.claude/` and `~/.nwave/`); there is no
-per-project opt-out.
+Claude Code's **own** co-authorship line (`🤖 Generated with Claude Code` +
+`Co-Authored-By: Claude`) is controlled separately by Claude Code's
+`attribution` setting, which nWave does not change. Set
+`"attribution": {"commit": "", "pr": ""}` in `~/.claude/settings.json` to
+suppress it.
 
 ## Per-Project Configuration
 

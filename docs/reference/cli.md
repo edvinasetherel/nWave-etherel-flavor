@@ -28,8 +28,6 @@ nwave-ai uninstall [--target <path>]
 
 nwave-ai doctor [--json] [--fix]
 
-nwave-ai attribution <on|off|status>
-
 nwave-ai project <enable|disable>
 
 nwave-ai mode <all|opt-in>
@@ -275,74 +273,6 @@ nwave-ai version
 nwave-ai --version
 
 nwave-ai -V
-```
-
----
-
-## nwave-ai attribution
-
-Enable or disable automatic commit attribution. When enabled, nWave adds a `Co-Authored-By:` trailer to commits made inside Claude Code hooks.
-
-### Synopsis
-
-```
-nwave-ai attribution <on|off|status>
-```
-
-### Positional arguments
-
-| Argument | Required | Type | Description                                   |
-|----------|----------|------|------|
-| action   | yes      | enum | One of `on`, `off`, or `status`.               |
-
-### Exit codes
-
-| Code | Condition                                           |
-|------|------|
-| 0    | Action completed successfully.                      |
-| 1    | Invalid action (not `on`, `off`, or `status`).      |
-
-### Output
-
-**stdout** on `attribution on`:
-
-```
-Attribution enabled. Your commits will include the nWave credit line.
-```
-
-**stdout** on `attribution off`:
-
-```
-Attribution disabled. Your commits will not include the nWave credit line.
-```
-
-**stdout** on `attribution status` (enabled):
-
-```
-Attribution is currently on.
-```
-
-**stdout** on `attribution status` (disabled):
-
-```
-Attribution is currently off.
-```
-
-**stderr** on invalid action:
-
-```
-Unknown attribution action: invalid
-Usage: nwave-ai attribution <on|off|status>
-```
-
-### Example
-
-```bash
-nwave-ai attribution on
-
-nwave-ai attribution status
-
-nwave-ai attribution off
 ```
 
 ---

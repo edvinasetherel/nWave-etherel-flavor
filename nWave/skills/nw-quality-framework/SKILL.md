@@ -203,7 +203,6 @@ Consequence rules:
 **Criterion**: Tests on installer-class, sync-class, or hook-registration code that mutate user-observable state in ≥2 slots MUST declare `universe` and `expected` deltas via `assert_state_delta`, OR explicitly document a bypass justification citing one of the named bypass conditions.
 
 **Why this gate exists**: bug #48 regression class — "test asserts post-state property without verifying surrounding state remained unchanged." Production code writes to additional state slots; tests that only assert on the primary output slot miss these mutations silently. Empirical evidence: 4/7 installer test files (57% hit rate) exposed previously-untracked mutations during migration, including:
-- `attribution.trailer` written silently — post-state test only checked `returncode`
 - `content.full` transitioned `None → str` — test never declared `content.full` in universe
 
 **Addressable scope**: ~28% of the suite (installer + sync + hook tests). NOT applied to pure-function tests, schema validators, or interaction tests — those retain standard assertion style. Gate does not block commits from the other 72%.

@@ -533,7 +533,6 @@ Import: `from nwave_ai.state_delta import assert_state_delta, <predicates>`.
 Migration of 7 installer test files: **4/7 (57%) exposed previously-untracked mutations** that post-state-property assertions had missed.
 
 Hidden mutations caught:
-- `attribution.trailer` written silently (`test_attribution_plugin`) — post-state test only checked `returncode`.
 - `content.full` transitioned `None → str` (`test_opencode_des_plugin`) — old assertion never declared `content.full` in universe.
 
 ### Reusable helpers that emerged from migration
@@ -545,7 +544,7 @@ Hidden mutations caught:
 ### References
 
 - Source: `nwave_ai/state_delta/matcher.py`
-- Canonical migrated example: `tests/installer/unit/plugins/test_attribution_plugin.py`
+- Canonical migrated example: `tests/installer/unit/plugins/test_opencode_des_plugin.py`
 - D-12 hard gate examples: `tests/state_delta/integration/test_pilot_bug48.py`
 
 ## PBT Anti-Patterns

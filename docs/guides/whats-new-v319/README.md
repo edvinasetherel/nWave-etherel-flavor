@@ -29,7 +29,7 @@ See [Activating nWave in a Project](../activating-nwave-per-project.md) for the 
 
 The user-facing `nwave-ai` command surface now lives in one reference page.
 
-**What it does**: A single lookup for `install`, `uninstall`, `doctor`, `status`, `project`, `mode`, `attribution`, `completion`, and `version` — every flag, exit code, and output string. It also documents that `nwave-ai install` consumes `--platform` / `--target` / `--yes` / `--density-only` itself and **forwards the rest** (`--dry-run`, `--backup-only`, `--restore`) to the underlying installer.
+**What it does**: A single lookup for `install`, `uninstall`, `doctor`, `status`, `project`, `mode`, `completion`, and `version` — every flag, exit code, and output string. It also documents that `nwave-ai install` consumes `--platform` / `--target` / `--yes` / `--density-only` itself and **forwards the rest** (`--dry-run`, `--backup-only`, `--restore`) to the underlying installer.
 
 **When to use**: Looking up a flag or exit code, or scripting `nwave-ai` in CI.
 

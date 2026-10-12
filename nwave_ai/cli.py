@@ -11,16 +11,7 @@ from typing import Literal
 from nwave_ai.doctor.context import DoctorContext
 from nwave_ai.doctor.formatter import render_human, render_json
 from nwave_ai.doctor.runner import run_doctor
-from scripts.install.attribution_utils import (
-    migrate_legacy_hook,
-    migrate_legacy_settings_attribution,
-    read_attribution_preference,
-    read_global_config,
-    register_attribution_hook,
-    unregister_attribution_hook,
-    write_attribution_preference,
-    write_global_config,
-)
+from scripts.shared.global_config import read_global_config, write_global_config
 from scripts.shared.install_paths import GLOBAL_CONFIG_FILENAME
 
 
@@ -175,7 +166,7 @@ def handle_install_density_prompt(
 def _write_density_choice(config_dir: Path, *, choice: str) -> None:
     """Persist the chosen density alongside `expansion_prompt: ask-intelligent`.
 
-    Uses read-modify-write to preserve unrelated keys (e.g. attribution).
+    Uses read-modify-write to preserve unrelated keys (e.g. activation).
     Per Decision 4 (2026-04-28), the fresh-install expansion prompt default
     is `ask-intelligent` (scoped trigger-based menu) — only Tier-2 items
     that match a fired trigger are shown to the user. This replaces the
@@ -387,116 +378,6 @@ def _handle_uninstall(args: list[str]) -> int:
     if target is not None:
         os.environ["CLAUDE_CONFIG_DIR"] = str(target)
     return _run_script("uninstall_nwave.py", remaining)
-
-
-def _handle_attribution(args: list[str]) -> int:
-    """Handle 'attribution on|off|status' subcommand."""
-    if not args:
-        print("Usage: nwave-ai attribution <on|off|status>", file=sys.stderr)
-        return 1
-
-    action = args[0].lower()
-    config_dir = _get_config_dir()
-
-    if action == "on":
-        write_attribution_preference(config_dir, enabled=True)
-        # ADR-CA-007: the settings.json credit write surface is retired. The
-        # activation-gated PreToolUse commit-attribution hook is the SOLE
-        # attribution mechanism, so enabling registers it (and only it).
-        # Ensure ~/.claude exists so the hook has a home, then register it
-        # idempotently. Contained so a registration fault never fails the
-        # toggle (belt-and-suspenders).
-        claude_dir = Path.home() / ".claude"
-        registered = False
-        try:
-            claude_dir.mkdir(parents=True, exist_ok=True)
-            registered = register_attribution_hook(enabled=True)
-        except Exception:
-            pass
-        if registered:
-            print(
-                "Attribution enabled. New Claude commits will carry the nWave "
-                "credit via the commit-attribution hook. Restart Claude (don't "
-                "/resume older sessions) for this to take effect."
-            )
-        else:
-            print(
-                "Attribution enabled, but the commit-attribution hook could not "
-                "be registered (Claude Code config absent or user-modified)."
-            )
-        return 0
-
-    if action == "off":
-        write_attribution_preference(config_dir, enabled=False)
-        # ADR-CA-007 DDD-3: clean any legacy nWave-managed settings credit,
-        # preserving a user-modified value. Route through the claude_dir seam
-        # explicitly so the sandbox injection holds (fail-open: never raises).
-        migrate_legacy_settings_attribution(
-            config_dir, claude_dir=Path.home() / ".claude"
-        )
-        # ADR-CA-006: disabling removes ONLY the commit-attribution hook entry,
-        # leaving the DES guards intact. Contained so it never breaks the toggle.
-        try:
-            unregister_attribution_hook()
-        except Exception:
-            pass
-        # Root cause C: 'off' is the remediation affordance, so it must also
-        # remove the orphaned legacy prepare-commit-msg git shim (hardened in
-        # migrate_legacy_hook to scan every candidate hooks dir). Without this,
-        # a machine already broken by an orphaned shim cannot recover with the
-        # obvious command. Contained so it never breaks the toggle (fail-open).
-        try:
-            migrate_legacy_hook(config_dir=config_dir)
-        except Exception:
-            pass
-        print(
-            "Attribution disabled. New Claude sessions will not carry the nWave "
-            "credit line. Restart Claude (don't /resume older sessions) for this "
-            "to take effect."
-        )
-        return 0
-
-    if action == "status":
-        # ADR-CA-007: the EFFECTIVE attribution scope is the preference
-        # (attribution.enabled) AND this repo's resolved activation. Report
-        # BOTH so a user can tell on+active from on+inactive. Reuse the
-        # canonical resolve_activation policy over the marker + global mode —
-        # never re-derive it here (DDD discipline, mirrors the doctor check).
-        preference = read_attribution_preference(config_dir)
-        if preference is True:
-            print("Attribution is currently on.")
-            active = _repo_attribution_active()
-            scope = "active" if active else "inactive"
-            print(f"Attribution is {scope} for this repo.")
-        else:
-            print("Attribution is currently off.")
-        return 0
-
-    print(f"Unknown attribution action: {action}", file=sys.stderr)
-    print("Usage: nwave-ai attribution <on|off|status>", file=sys.stderr)
-    return 1
-
-
-def _repo_attribution_active() -> bool:
-    """Resolve THIS repo's activation, failing to INACTIVE on a read error.
-
-    Reuses the canonical ``resolve_activation`` policy over the two scalars the
-    ``DESConfig`` reader exposes (marker ``enabled_for_repo`` + global
-    ``activation.mode``) — the policy is NOT re-derived here (mirrors the
-    activation-aware doctor check).
-
-    On a config-read exception we fail to INACTIVE (return False), matching the
-    activation gate's fail-to-inactive-under-opt-in semantics: a diagnostic must
-    never be more optimistic than the enforcement gate.
-    """
-    try:
-        from des.adapters.driven.config.des_config import DESConfig
-        from des.domain.activation_policy import resolve_activation
-
-        config = DESConfig(cwd=Path.cwd())
-        return resolve_activation(config.enabled_for_repo, config.activation_mode)
-    except Exception:
-        return False
 
 
 def _handle_doctor(args: list[str]) -> int:
@@ -860,7 +741,6 @@ def _print_usage() -> int:
         "  sync           Mirror in-flight feature-delta files to "
         "<master>/.nwave/in-flight/"
     )
-    print("  attribution    Toggle commit attribution (on/off/status)")
     print("  outcomes       Register / check shipped outcomes (Tier-1 collision)")
     print("  plugin         Manage tool plugins (install/uninstall/list)")
     print("  project        Enable or disable nWave activation for this project")
@@ -1008,8 +888,6 @@ def main() -> int:
         return _handle_install(sys.argv[2:])
     elif command == "uninstall":
         return _handle_uninstall(sys.argv[2:])
-    elif command == "attribution":
-        return _handle_attribution(sys.argv[2:])
     elif command == "doctor":
         return _handle_doctor(sys.argv[2:])
     elif command == "sync":

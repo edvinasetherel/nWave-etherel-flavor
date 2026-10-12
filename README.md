@@ -84,7 +84,7 @@ The twelve fixes above shipped in [nWave v3.22.0](https://github.com/nWave-ai/nW
 ### v3.19
 
 - **Per-project activation (opt-in gate)** — nWave's globally-installed DES hooks are now **opt-in per repository**. Unmarked repos stay silent (hooks exit 0); a tracked `.nwave/local-config.json` marker plus a global `activation.mode` (`opt-in` default, or `all`) decide where nWave runs. Manage it with `nwave-ai project enable|disable`, `nwave-ai mode`, and `nwave-ai status`. Existing projects auto-adopt on first `/nw-` use, so nothing breaks. See **[Activating nWave in a Project](docs/guides/activating-nwave-per-project.md)**.
-- **`nwave-ai` CLI reference** — the user-facing command surface (`install`, `uninstall`, `doctor`, `status`, `project`, `mode`, `attribution`, `completion`, `version`) is documented in one place, including the `install` flag pass-through to the underlying installer. See **[CLI Reference](docs/reference/cli.md)**.
+- **`nwave-ai` CLI reference** — the user-facing command surface (`install`, `uninstall`, `doctor`, `status`, `project`, `mode`, `completion`, `version`) is documented in one place, including the `install` flag pass-through to the underlying installer. See **[CLI Reference](docs/reference/cli.md)**.
 
 See the full **[What's New in v3.19](docs/guides/whats-new-v319/)** for details.
 

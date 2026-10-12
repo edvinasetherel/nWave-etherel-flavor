@@ -284,6 +284,10 @@
 
 - [nw-hotspot](nw-hotspot.md) — Git change frequency hotspot analysis — find the most-changed files in your codebase
 
+## nw-hybrid-paradigm
+
+- [nw-hybrid-paradigm](nw-hybrid-paradigm.md) — Hybrid paradigm decision guide - function or object, where per-run state lives, time and ids as ports, procedures disguised as classes
+
 ## nw-infrastructure-and-observability
 
 - [nw-infrastructure-and-observability](nw-infrastructure-and-observability.md) — Infrastructure as Code patterns (Terraform, Kubernetes), observability design (SLOs, metrics, alerting, dashboards), and pipeline security stages. Load when designing infrastructure, observability, or security scanning.
@@ -343,6 +347,10 @@
 ## nw-mutation-test
 
 - [nw-mutation-test](nw-mutation-test.md) — Runs feature-scoped mutation testing to validate test suite quality. Use after implementation to verify tests catch real bugs (kill rate >= 80%).
+
+## nw-naming
+
+- [nw-naming](nw-naming.md) — Naming discipline - types name things, functions name actions, role suffixes, banned filler words, vocabulary reuse, self-check before handoff
 
 ## nw-new
 
@@ -482,7 +490,7 @@
 
 ## nw-sc-review-dimensions
 
-- [nw-sc-review-dimensions](nw-sc-review-dimensions.md) — Reviewer critique dimensions for peer review - implementation bias detection, test quality validation, completeness checks, and priority validation
+- [nw-sc-review-dimensions](nw-sc-review-dimensions.md) — Reviewer critique dimensions for peer review - implementation bias detection, test quality validation, completeness checks, priority validation, and naming and modelling
 
 ## nw-sd-case-studies
 

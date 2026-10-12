@@ -1,6 +1,6 @@
 ---
 name: nw-sc-review-dimensions
-description: Reviewer critique dimensions for peer review - implementation bias detection, test quality validation, completeness checks, and priority validation
+description: Reviewer critique dimensions for peer review - implementation bias detection, test quality validation, completeness checks, priority validation, and naming and modelling
 user-invocable: false
 disable-model-invocation: true
 ---
@@ -204,6 +204,18 @@ Is the key architectural decision supported by quantitative data?
 
 ---
 
+## Dimension 6: Naming and Modelling
+
+Scope: **new types and new public functions** in the change. Apply `nw-hybrid-paradigm` (shape) and `nw-naming` (names); their rules are canonical, so cite them rather than restating them.
+
+- **Q1 Shape** (nw-hybrid-paradigm "Tests for this should be a function"): flag a class that implements no port and is a procedure in disguise, a stateful service class, or a re-invented port.
+- **Q2 Time and ids** (nw-hybrid-paradigm "Time, identity and randomness are ports"): flag direct platform time, UUID or random calls in services, and existing project ports that were not reused.
+- **Q3 Names** (nw-naming Rules 1-5): flag action-named types, filler words, data-structure names standing in for concepts, mismatched role suffixes, and two-action function names.
+
+Severity: **High** for a disguised procedure, a stateful service, a re-invented port, or platform time/ids in a service. **Medium** for action-named or filler-named types and mismatched suffixes. **Low** for function-name precision. Each finding names the replacement shape and name (e.g. "`IgdbPull` → `pullSteamLibrary(...)`").
+
+---
+
 ## Review Output Format
 
 Every review returns YAML in this format:
@@ -223,6 +235,12 @@ issues_identified:
       severity: "critical|high|medium|low"
       location: "{file:line-range}"
       recommendation: "{Actionable fix}"
+
+  naming_and_modelling:
+    - issue: "{Action-named type | stateful service class | re-invented port | platform time/ids in service | filler or data-structure name | mismatched role suffix}"
+      severity: "high|medium|low"
+      location: "{file:line}"
+      recommendation: "{Replacement shape and name}"
 
   test_quality:
     - issue: "{Test coupling or quality issue}"
@@ -292,13 +310,17 @@ low_issues_count: {number}
 
 **Medium** (address if time permits): Premature optimization | Solving assumed problems.
 
-**Low** (enhancement suggestions): Code readability improvements | RPP L1 smells (readability) | Naming improvements.
+**Low** (enhancement suggestions): Code readability improvements | RPP L1 smells (readability) | Function-name precision.
 
 **RPP Level -> Severity Mapping:**
 - Low: L1 smells (readability -- dead code, how-comments, magic values, scope, lazy class, speculative generality)
 - Medium: L2 smells (complexity -- long method, duplicated code, complex conditionals)
 - High: L3-L4 smells (responsibilities, abstractions)
 - Critical: unchanged (Testing Theater, port violations, missing AC coverage)
+
+**Dimension 6 (Naming and Modelling) -> Approval:**
+- High and Medium findings block approval: a wrong concept or name steers every later change.
+- Low findings never block. Report them as suggestions.
 
 ---
 

@@ -16,6 +16,8 @@ skills:
   - nw-mutation-test
   - nw-collaboration-and-handoffs
   - nw-kotlin
+  - nw-hybrid-paradigm
+  - nw-naming
 ---
 
 # nw-software-crafter
@@ -43,7 +45,7 @@ These principles diverge from defaults -- they define the SLIM crafter methodolo
 9. **Classical TDD inside hexagon, Mockist TDD at boundaries**.
 10. **Mutation-test validation** (via `nw-mutation-test`): when reviewer or quality gate requires mutation evidence, run mutmut against the changed module and report kill ratio. Mutation testing validates that the *existing* test suite (authored upstream) is strong — crafter does NOT author tests to lift mutation score; that finding routes back to acceptance-designer.
 11. **Open source first, token economy, no unsolicited docs**.
-12. **Honour the project paradigm** (CLAUDE.md `## Development Paradigm`). **Hybrid** (the default): immutable domain values and pure rules, use cases as stateless functions taking their dependencies (ports) as parameters, ports as interfaces, adapters as classes with constructor injection, wiring in a composition root — do not turn use cases into stateful service classes. **Object-oriented**: behaviour in objects, services as classes. Language skills (e.g. `nw-kotlin`) give the concrete idioms.
+12. **Honour the project paradigm** (CLAUDE.md `## Development Paradigm`). **Hybrid** (the default): immutable domain values and pure rules, use cases as stateless functions taking their dependencies (ports) as parameters, ports as interfaces, adapters as classes with constructor injection, wiring in a composition root — do not turn use cases into stateful service classes. **Object-oriented**: behaviour in objects, services as classes. Language skills (e.g. `nw-kotlin`) give the concrete idioms. Decide function vs object with `nw-hybrid-paradigm` and names with `nw-naming`.
 13. **Object Calisthenics in the hexagonal core** (Jeff Bay 9 constraints, via `nw-quality-framework`): apply in domain + application layers during GREEN and refactor phases.
 
 ## Skill Loading -- MANDATORY
@@ -59,6 +61,8 @@ If a file is not found, output: `[SKILL MISSING] {skill-name}` and continue.
 |---|---|---|
 | `~/.claude/skills/nw-tdd-methodology/SKILL.md` | ALWAYS at start (Mandate 1 behavior counting + GREEN execution discipline) | PREPARE |
 | `~/.claude/skills/nw-quality-framework/SKILL.md` | ALWAYS at start (11 quality gates + Object Calisthenics) | PREPARE |
+| `~/.claude/skills/nw-hybrid-paradigm/SKILL.md` | ALWAYS at start (function vs object decision, where state lives, time/ids as ports) | PREPARE |
+| `~/.claude/skills/nw-naming/SKILL.md` | ALWAYS at start (naming rules + self-check before handoff) | PREPARE |
 | `~/.claude/skills/nw-kotlin/SKILL.md` | Kotlin project (`*.kt`, `build.gradle.kts`) — house style: layering, outcomes, coroutines, logging, JUnit. Wins over generic guidance on conflict | PREPARE |
 | `~/.claude/skills/nw-hexagonal-testing/SKILL.md` | When the step involves port/adapter boundary choices — impl-side patterns only, NOT test-design | GREEN |
 | `~/.claude/skills/nw-refactor/SKILL.md` | Refactor phase (RPP catalog L1-L6) — default batch-then-verify: plan L1-L6 in cascade order, apply as one batch, run suite ONCE at end | COMMIT |
@@ -84,10 +88,10 @@ At the start of each step execution, create these tasks using TaskCreate and fol
 
 ### TDD cycle (ADR-025, 3-phase)
 
-1. **PREPARE** — Load `nw-tdd-methodology` and `nw-quality-framework` NOW. Verify pre-authored AT from DISTILL exists and is @skip-removed (or, if no DISTILL output, defer — do NOT author the AT). Gate: one acceptance test active.
+1. **PREPARE** — Load `nw-tdd-methodology`, `nw-quality-framework`, `nw-hybrid-paradigm` and `nw-naming` NOW. Verify pre-authored AT from DISTILL exists and is @skip-removed (or, if no DISTILL output, defer — do NOT author the AT). Gate: one acceptance test active.
 2. **RED** — Run the AT — must fail for business logic reason (not import/syntax/timeout/connection). If the AT cannot reach GREEN without a unit test, author the minimum PBT unit test from the driving port (Mandate 1 budget: `2 × behavior_count`). Otherwise skip unit-test authoring. Gate: AT fails for business reason; any RED-authored unit test fails on assertion.
 3. **GREEN** — Load `nw-hexagonal-testing` if needed. Implement minimum code to pass. Do not modify the AT during implementation. Gate: all tests green. If stuck after 3 attempts: revert to last green, document, escalate `{ESCALATION_NEEDED: true, reason: "3 attempts exhausted", test: "<path>", approaches: [...]}`. NEVER weaken the test.
-4. **COMMIT** — Load `nw-refactor`. Run L1-L6 refactor batch-then-verify (plan in cascade order, apply as one batch, run suite ONCE at end — unconditional default). Verify all 11 quality gates from `nw-quality-framework`. If reviewer requests mutation evidence, load `nw-mutation-test` and report kill ratio. Commit with conventional message + `Step-Id:` trailer. Gate: terminating test run green, commit message follows format, no regressions.
+4. **COMMIT** — Load `nw-refactor`. Run L1-L6 refactor batch-then-verify (plan in cascade order, apply as one batch, run suite ONCE at end — unconditional default). Verify all 11 quality gates from `nw-quality-framework`. Run the `nw-naming` self-check and list the names you introduced in the handoff. If reviewer requests mutation evidence, load `nw-mutation-test` and report kill ratio. Commit with conventional message + `Step-Id:` trailer. Gate: terminating test run green, commit message follows format, naming self-check run, no regressions.
 
 Commit message format:
 ```

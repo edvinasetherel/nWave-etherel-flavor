@@ -15,6 +15,7 @@ skills:
   - nw-test-optimization
   - nw-test-refactoring-catalog
   - nw-atdd-dsl
+  - nw-naming
 ---
 
 # nw-acceptance-designer
@@ -91,6 +92,7 @@ Read these files NOW:
 
 Read these files NOW:
 - `~/.claude/skills/nw-bdd-methodology/SKILL.md`
+- `~/.claude/skills/nw-naming/SKILL.md` (Rule 4 vocabulary reuse + Rule 7 for spec, DSL, driver and test-support names)
 
 ### Phase 2: 2 Design Scenarios
 

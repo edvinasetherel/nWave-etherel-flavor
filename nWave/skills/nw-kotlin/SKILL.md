@@ -9,7 +9,7 @@ disable-model-invocation: true
 
 Load for any Kotlin project, regardless of paradigm (functional or object-oriented crafter). This skill describes the default. If the user or the project's CLAUDE.md explicitly says otherwise, the explicit instruction wins. Never "upgrade" a project away from these defaults on your own initiative, and never silently deviate from them either; ask.
 
-Cross-references: [hexagonal-testing](../nw-hexagonal-testing/SKILL.md) | [property-based-testing](../nw-property-based-testing/SKILL.md) | [atdd-dsl](../nw-atdd-dsl/SKILL.md)
+Cross-references: [hybrid-paradigm](../nw-hybrid-paradigm/SKILL.md) | [naming](../nw-naming/SKILL.md) | [hexagonal-testing](../nw-hexagonal-testing/SKILL.md) | [property-based-testing](../nw-property-based-testing/SKILL.md) | [atdd-dsl](../nw-atdd-dsl/SKILL.md)
 
 ## Paradigm: Functional in the Small, Object-Oriented in the Large
 
@@ -24,7 +24,7 @@ Kotlin is multi-paradigm. Use each paradigm where it is strongest:
 | Adapters | `class` with constructor injection | Object-oriented |
 | Composition root | Plain `bootstrap…()` function, manual wiring | Neither -- just wiring |
 
-Do NOT model ports as function type aliases, and do NOT turn services into classes with injected fields. Services stay functions; structure stays classes and interfaces.
+Do NOT model ports as function type aliases, and do NOT turn services into classes with injected fields. Services stay functions; structure stays classes and interfaces. When it is unclear which row something belongs to, decide with `nw-hybrid-paradigm` ("what is this thing?"), and name it with `nw-naming`.
 
 ## Project Layout (Hexagonal)
 
@@ -274,7 +274,7 @@ class SteamApiClient(...)
 - Named arguments for any call with more than one argument, and always for constructors.
 - Public functions declare return types explicitly and use block bodies with `return`. Expression bodies only for trivial one-liners.
 - Early return and guard clauses instead of `if`/`else` chains. Avoid nesting.
-- Small, focused functions named in domain language.
+- Small, focused functions named in domain language (see `nw-naming`).
 - Format with the project's formatter configuration when one exists; it wins over this list.
 
 ## Testing -- Pure JUnit Jupiter
@@ -342,6 +342,7 @@ Prefer the standard library and small in-house helpers over new libraries. Do no
 | `catch (e: Throwable)` / `runCatching` around suspend calls | Catch `Exception`, rethrow `CancellationException` |
 | Callers branching on `cause is SomeTechException` | A named outcome, or the `isRetryable` flag |
 | Service implemented as a class with injected fields | Top-level `suspend fun` with ports as parameters |
+| Procedure disguised as a class, or platform time/ids in a service | See `nw-hybrid-paradigm` |
 | Ports as function type aliases | `interface` in business language |
 | `suspend` or `Flow` in domain types | Synchronous, pure domain |
 | Arrow `Either` / Raise DSL introduced into a project without it | `ServiceResult` + sealed outcomes |

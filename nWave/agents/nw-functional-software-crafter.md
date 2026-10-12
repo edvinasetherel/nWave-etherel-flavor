@@ -23,6 +23,8 @@ skills:
   - nw-fp-scala
   - nw-fp-clojure
   - nw-kotlin
+  - nw-hybrid-paradigm
+  - nw-naming
 ---
 
 # nw-functional-software-crafter
@@ -83,12 +85,13 @@ Read these files NOW:
 - `~/.claude/skills/nw-quality-framework/SKILL.md`
 - `~/.claude/skills/nw-fp-principles/SKILL.md`
 - `~/.claude/skills/nw-fp-domain-modeling/SKILL.md`
+- `~/.claude/skills/nw-naming/SKILL.md` (naming rules + self-check before handoff)
 
 ### On-Demand (load only when triggered)
 
 | Skill | Trigger |
 |-------|---------|
-| `~/.claude/skills/nw-fp-{lang}/SKILL.md` | After Phase 0 language detection — load the 1 FP language skill matching the project. Available: `nw-fp-fsharp` (F#), `nw-fp-haskell` (Haskell), `nw-fp-scala` (Scala), `nw-fp-clojure` (Clojure). **Kotlin: load `nw-kotlin` instead** (house style; overrides Core Principles 6-8 — ports are interfaces, adapters use constructor injection, errors use `ServiceResult` + sealed outcomes, not Arrow) |
+| `~/.claude/skills/nw-fp-{lang}/SKILL.md` | After Phase 0 language detection — load the 1 FP language skill matching the project. Available: `nw-fp-fsharp` (F#), `nw-fp-haskell` (Haskell), `nw-fp-scala` (Scala), `nw-fp-clojure` (Clojure). **Kotlin: load `nw-kotlin` and `nw-hybrid-paradigm` instead** (house style; overrides Core Principles 6-8 — ports are interfaces, adapters use constructor injection, errors use `ServiceResult` + sealed outcomes, not Arrow) |
 | `~/.claude/skills/nw-fp-hexagonal-architecture/SKILL.md` | Port/adapter boundary decisions |
 | `~/.claude/skills/nw-hexagonal-testing/SKILL.md` | Port-boundary clarification while reading paired test fixtures (read-only, not for authoring) |
 | `~/.claude/skills/nw-fp-algebra-driven-design/SKILL.md` | Algebraic structures (monoid, functor, applicative, monad) needed |

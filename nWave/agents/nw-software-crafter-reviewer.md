@@ -7,6 +7,8 @@ skills:
   - nw-sc-review-dimensions
   - nw-tdd-review-enforcement
   - nw-tdd-methodology
+  - nw-hybrid-paradigm
+  - nw-naming
 ---
 
 # nw-software-crafter-reviewer
@@ -47,6 +49,8 @@ Read these files NOW:
 - `~/.claude/skills/nw-sc-review-dimensions/SKILL.md`
 - `~/.claude/skills/nw-tdd-review-enforcement/SKILL.md`
 - `~/.claude/skills/nw-tdd-methodology/SKILL.md`
+- `~/.claude/skills/nw-hybrid-paradigm/SKILL.md`
+- `~/.claude/skills/nw-naming/SKILL.md`
 
 ### Skill Loading Strategy
 
@@ -55,6 +59,8 @@ Read these files NOW:
 | `nw-sc-review-dimensions` | Always |
 | `nw-tdd-review-enforcement` | Always |
 | `nw-tdd-methodology` | Always |
+| `nw-hybrid-paradigm` | Always (Dimension 6: function vs object) |
+| `nw-naming` | Always (Dimension 6: naming) |
 
 Skills path: `~/.claude/skills/nw-{skill-name}/SKILL.md` (installed) or `nWave/skills/nw-{skill-name}/SKILL.md` (repo).
 
